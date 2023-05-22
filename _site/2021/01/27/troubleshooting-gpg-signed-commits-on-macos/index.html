@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Troubleshooting GPG signed commits on macOS</title>
+
+  
+  <meta name="author" content="Kamruddin Ahmed">
+  
+
+  <meta name="description" content="Introduction I’ve been using GitHub for the past couple of years, but it was not until last year that my...">
+
+  
+
+  
+  <meta name="keywords" content="azure,cesrom,coatl,coatl.dev,coatl-dev,__coatldev__,data,homebrew,macos,pycharm,python,sql,thecesrom,vscode">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Kamruddin Ahmed - Data Analyst" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Kamruddin Ahmed - Data Analyst">
+  <meta property="og:title" content="Troubleshooting GPG signed commits on macOS">
+  <meta property="og:description" content="Introduction I’ve been using GitHub for the past couple of years, but it was not until last year that my...">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Kamruddin Ahmed">
+  <meta property="og:article:published_time" content="2021-01-27T20:24:00+01:00">
+  <meta property="og:url" content="http://localhost:4000/2021/01/27/troubleshooting-gpg-signed-commits-on-macos/">
+  <link rel="canonical" href="http://localhost:4000/2021/01/27/troubleshooting-gpg-signed-commits-on-macos/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@kamruddindia">
+  <meta name="twitter:creator" content="@kamruddindia">
+
+  <meta property="twitter:title" content="Troubleshooting GPG signed commits on macOS">
+  <meta property="twitter:description" content="Introduction I’ve been using GitHub for the past couple of years, but it was not until last year that my...">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Kamruddin Ahmed - Data Analyst</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archive">Archive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li></ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/profile.jpg" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Troubleshooting GPG signed commits on macOS</h1>
+          
+
+          
+            <span class="post-meta">Posted on 2021-01-27</span>
+            
+            
+              <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="post-meta"><span class="d-none d-md-inline middot">&middot;</span> 2 minute read</span>
+
+
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h3 id="introduction">Introduction</h3>
+
+<p>I’ve been using GitHub for the past couple of years, but it was not until last year that my contribution activity increased. Some PRs <a href="https://github.com/justinlettau/sql-source-control/pull/133">here</a> and some others <a href="https://github.com/Homebrew/homebrew-cask-versions/pulls?q=is%3Apr+author%3Athecesrom">here</a> and <a href="https://github.com/Homebrew/homebrew-cask/pulls?q=is%3Apr+author%3Athecesrom">there</a>.</p>
+
+<p>I have created <a href="https://github.com/coatl-dev">an organization</a>, started <a href="https://github.com/thecesrom?tab=sponsoring">sponsoring</a>, and switched from HTTP to SSH following <a href="https://docs.github.com/articles/generating-an-ssh-key/">this useful guide</a>.</p>
+
+<p>But yesterday a user’s commit <code class="language-plaintext highlighter-rouge">Verified</code> label caught my attention, so I decided to grab a cup of coffee and learn about <a href="https://docs.github.com/articles/generating-a-gpg-key/">managing commit signature verification</a>, and after following all the necessary steps I was able to generate my GPG key and upload it to GitHub, but there was an issue, which is the main topic of this post.</p>
+
+<h3 id="the-problem">The problem</h3>
+
+<p>At the <a href="https://docs.github.com/en/github/authenticating-to-github/signing-commits">Signing commits</a> step I was about to sign my first commit but then tragedy struck.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">-S</span> <span class="nt">-m</span> <span class="s2">"First signed commit"</span>
+error: gpg failed to sign the data
+fatal: failed to write commit object
+</code></pre></div></div>
+
+<p>I was not sure what was going, so I retraced my steps, and I even found <a href="https://github.com/pstadler/keybase-gpg-github#troubleshooting-gpg-failed-to-sign-the-data">some</a> <a href="https://stackoverflow.com/a/41054093">possible</a> solutions, but none of them worked. And I even deleted my keys, and started again but then, similar to this <a href="https://unix.stackexchange.com/questions/571597/gpg-key-gen-fails-no-such-file-or-directory">user’s symptoms</a>, I got the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gpg <span class="nt">--full-generate-key</span>
+...
+gpg: agent_genkey failed: No such file or directory
+Key generation failed: No such file or directory
+</code></pre></div></div>
+
+<p>What is this? Let’s see what <code class="language-plaintext highlighter-rouge">$GPG_TTY</code> has to say:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$GPG_TTY</span>
+not a <span class="nb">tty</span>
+</code></pre></div></div>
+
+<p>What? That doesn’t make sense! – I thought to myself.</p>
+
+<p>But finally, I saw the light.</p>
+
+<h3 id="the-solution">The solution</h3>
+
+<p>I found <a href="https://eriksamuelsson.com/sign-git-commits-on-github-with-gpg-in-macos/">this great guide</a> on how to set up GPG, and some useful <a href="https://brew.sh/">Homebrew</a> formulae, courtesy of <a href="https://github.com/samuelsson">Erik Samuelsson</a>.</p>
+
+<p>But all of the guides that I found did not take into account my current setup; I am using <a href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a> by <a href="https://github.com/romkatv/">Roman Perepelitsa</a>, and he had <a href="https://unix.stackexchange.com/a/608921">the answer</a> to my problem.</p>
+
+<blockquote>
+  <p>tty command requires that stdin is attached to a terminal. When using Powerlevel10k, stdin is redirected from /dev/null when Instant Prompt is activated and until Zsh is fully initialized. This is explained in more detail in Powerlevel10k FAQ.</p>
+
+  <p>To solve this problem you can either move export GPG_TTY=$(tty) to the top of ~/.zshrc so that it executes before Instant Prompt is activated, or (better!) use export GPG_TTY=$TTY. The latter version will work anywhere and it’s over 1000 times faster. TTY is a special parameter set by Zsh very early during initialization. It gives you access to the terminal even when stdin might be redirected.</p>
+
+  <p>answered Sep 11 ‘20 at 7:28 by <a href="https://unix.stackexchange.com/users/363991/roman-perepelitsa">Roman Perepelitsa</a></p>
+</blockquote>
+
+<p>So there it was. Instead of <code class="language-plaintext highlighter-rouge">GPG_TTY=$(tty)</code> somewhere in my <code class="language-plaintext highlighter-rouge">.zshrc</code>, all I needed was <code class="language-plaintext highlighter-rouge">GPG_TTY=$TTY</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">exec</span> <span class="s2">"</span><span class="nv">$SHELL</span><span class="s2">"</span>
+<span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$GPG_TTY</span>
+/dev/ttys000
+</code></pre></div></div>
+
+<p>And ever since, all my commits are signed by updating my <code class="language-plaintext highlighter-rouge">git</code> settings:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> user.signiningkey XXXXXXXXXXXXXXXX
+git config <span class="nt">--global</span> commit.gpgsign <span class="nb">true</span>
+</code></pre></div></div>
+
+<p>And after installing <code class="language-plaintext highlighter-rouge">pinentry-mac</code>, I don’t have to enter my passphrase every single time.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'pinentry-program /usr/local/bin/pinentry-mac'</span> <span class="o">&gt;&gt;</span> ~/.gnupg/gpg-agent.conf
+killall gpg-agent
+</code></pre></div></div>
+
+<p>And done!</p>
+
+<p>Hope this helps.</p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#git">git</a>
+          
+            <a href="/tags#github">github</a>
+          
+            <a href="/tags#gpg">gpg</a>
+          
+            <a href="/tags#quick-take">quick-take</a>
+          
+            <a href="/tags#tutorial">tutorial</a>
+          
+        </div>
+      
+
+      
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2020/12/22/79-characters/" data-toggle="tooltip" data-placement="top" title="79 characters">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2021/03/07/how-i-use-black-flake8-and-isort-to-format-python2-code/" data-toggle="tooltip" data-placement="top" title="How I use black, flake8 and isort to format Python2 code">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'qmr0.github.io';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:amdqmr@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/qmr0" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/kamruddindia" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/kamruddinahmed" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Kamruddin Ahmed
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">qmr0.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

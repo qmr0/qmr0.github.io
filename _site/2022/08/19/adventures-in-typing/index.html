@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Adventures in typing</title>
+
+  
+  <meta name="author" content="Kamruddin Ahmed">
+  
+
+  <meta name="description" content="The "obscure" AttributeError exception">
+
+  
+
+  
+  <meta name="keywords" content="azure,cesrom,coatl,coatl.dev,coatl-dev,__coatldev__,data,homebrew,macos,pycharm,python,sql,thecesrom,vscode">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Kamruddin Ahmed - Data Analyst" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Kamruddin Ahmed - Data Analyst">
+  <meta property="og:title" content="Adventures in typing">
+  <meta property="og:description" content="The "obscure" AttributeError exception">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Kamruddin Ahmed">
+  <meta property="og:article:published_time" content="2022-08-19T01:43:00+02:00">
+  <meta property="og:url" content="http://localhost:4000/2022/08/19/adventures-in-typing/">
+  <link rel="canonical" href="http://localhost:4000/2022/08/19/adventures-in-typing/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@kamruddindia">
+  <meta name="twitter:creator" content="@kamruddindia">
+
+  <meta property="twitter:title" content="Adventures in typing">
+  <meta property="twitter:description" content="The "obscure" AttributeError exception">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Kamruddin Ahmed - Data Analyst</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archive">Archive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li></ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/profile.jpg" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Adventures in typing</h1>
+          
+            
+              <h2 class="post-subheading">The "obscure" AttributeError exception</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on 2022-08-19</span>
+            
+            
+              <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="post-meta"><span class="d-none d-md-inline middot">&middot;</span> 3 minute read</span>
+
+
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <p>Python packaging series:</p>
+
+<ul>
+  <li><a href="http://localhost:4000/2021/10/26/lessons-learned-in-packaging-python-projects/">Lessons learned in packaging Python projects</a></li>
+  <li><a href="http://localhost:4000/2021/12/10/ignition-api-package-and-typing/">ignition-api package and typing</a></li>
+</ul>
+
+<p>Welcome to the third installment of what now I call the “Python packaging series”.</p>
+
+<p>Last time I wrote about my progress and lessons learned while creating the <code class="language-plaintext highlighter-rouge">ignition-api</code> Python package, and a lot has happened in the last eight months, so let me fill you in.</p>
+
+<ul>
+  <li>In March 2022, the <strong>ignition-api</strong> <a href="https://github.com/ignition-api">GitHub organization</a> was born
+    <ul>
+      <li>With that, each branch of the <strong>thecesrom/Ignition</strong> repo was moved into its own repo; <a href="https://github.com/ignition-api/jython">jython</a>, <a href="https://github.com/ignition-api/7.9">7.9</a>, <a href="https://github.com/ignition-api/8.0">8.0</a>, and <a href="https://github.com/ignition-api/8.1">8.1</a></li>
+    </ul>
+  </li>
+  <li>In June 29 2022, <code class="language-plaintext highlighter-rouge">ignition-api-stubs</code> got its Alpha release, and a month later it got its Beta release
+    <ul>
+      <li>Some valuable knowledge in typing was gained (more on <code class="language-plaintext highlighter-rouge">stubgen</code> and <code class="language-plaintext highlighter-rouge">TypedDict</code> in another post)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">git-cliff</code> was replaced by <code class="language-plaintext highlighter-rouge">commitizen</code> on actively developed repos</li>
+</ul>
+
+<p>That pretty much sums up the last couple of months.</p>
+
+<p>And now, onto our main topic.</p>
+
+<p>As I continued working on improving and adding type hints (or comments) in baby steps to the <code class="language-plaintext highlighter-rouge">ignition-api</code> package, and then decided to accept Unicode literals and not just <code class="language-plaintext highlighter-rouge">str</code>, I added the following import to all modules:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+</code></pre></div></div>
+
+<p>The reason why I decided to create an alias called <code class="language-plaintext highlighter-rouge">String</code> instead of using <code class="language-plaintext highlighter-rouge">AnyStr</code> from <code class="language-plaintext highlighter-rouge">typing</code> escapes me at this moment, but a quick test shows that <code class="language-plaintext highlighter-rouge">mypy</code> throws an error in a function where I specifically return <code class="language-plaintext highlighter-rouge">unicode</code>; so maybe that was the “why”.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>After some debate, I decided to refactor my code and move the <code class="language-plaintext highlighter-rouge">String</code> alias to <code class="language-plaintext highlighter-rouge">java.lang</code>, where it belonged all along. Enter commit <a href="https://github.com/thecesrom/Ignition/commit/ea530ac">ea530ac</a>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">ignition-api</code> <a href="https://pypi.org/project/ignition-api/8.1.13/">8.1.13</a> was released in December 2021, and I did not realize my mistake until January 2022 when I upgraded my virtual environment for my <code class="language-plaintext highlighter-rouge">incendium</code> project and tried to run <code class="language-plaintext highlighter-rouge">pip list</code>, only then it dawned upon me I had pushed a bad release.</p>
+
+<p>Once anyone updated to <code class="language-plaintext highlighter-rouge">ignition-api</code> 8.1.13, <code class="language-plaintext highlighter-rouge">pip</code> under their Python environment (or installation) ceased to work, and it threw the following error:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"/Users/thecesrom/.pyenv/versions/2.7.18/lib/python2.7/runpy.py"</span>, line 174, <span class="k">in </span>_run_module_as_main
+    <span class="s2">"__main__"</span>, fname, loader, pkg_name<span class="o">)</span>
+  File <span class="s2">"/Users/thecesrom/.pyenv/versions/2.7.18/lib/python2.7/runpy.py"</span>, line 72, <span class="k">in </span>_run_code
+    <span class="nb">exec </span>code <span class="k">in </span>run_globals
+  File <span class="s2">"/Users/thecesrom/.pyenv/versions/2.7.18/envs/incendium/lib/python2.7/site-packages/pip/__main__.py"</span>, line 23, <span class="k">in</span> &lt;module&gt;
+    from pip._internal.cli.main import main as _main  <span class="c"># isort:skip # noqa</span>
+  File <span class="s2">"/Users/thecesrom/.pyenv/versions/incendium/lib/python2.7/site-packages/pip/_internal/cli/main.py"</span>, line 10, <span class="k">in</span> &lt;module&gt;
+    from pip._internal.cli.autocompletion import autocomplete
+  File <span class="s2">"/Users/thecesrom/.pyenv/versions/incendium/lib/python2.7/site-packages/pip/_internal/cli/autocompletion.py"</span>, line 4, <span class="k">in</span> &lt;module&gt;
+    import optparse
+  File <span class="s2">"/Users/thecesrom/.pyenv/versions/2.7.18/lib/python2.7/optparse.py"</span>, line 90, <span class="k">in</span> &lt;module&gt;
+    from gettext import gettext
+  File <span class="s2">"/Users/thecesrom/.pyenv/versions/2.7.18/lib/python2.7/gettext.py"</span>, line 49, <span class="k">in</span> &lt;module&gt;
+    import locale, copy, os, re, struct, sys
+  File <span class="s2">"/Users/thecesrom/.pyenv/versions/2.7.18/lib/python2.7/copy.py"</span>, line 60, <span class="k">in</span> &lt;module&gt;
+    from org.python.core import PyStringMap
+  File <span class="s2">"/Users/thecesrom/.pyenv/versions/incendium/lib/python2.7/site-packages/org/python/core/__init__.py"</span>, line 5, <span class="k">in</span> &lt;module&gt;
+    from java.lang import Object
+  File <span class="s2">"/Users/thecesrom/.pyenv/versions/incendium/lib/python2.7/site-packages/java/lang/__init__.py"</span>, line 22, <span class="k">in</span> &lt;module&gt;
+    from typing import Union
+  File <span class="s2">"/Users/thecesrom/.pyenv/versions/incendium/lib/python2.7/site-packages/typing.py"</span>, line 1440, <span class="k">in</span> &lt;module&gt;
+    copy._copy_dispatch[GenericMeta] <span class="o">=</span> _copy_generic
+AttributeError: <span class="s1">'module'</span> object has no attribute <span class="s1">'_copy_dispatch'</span>
+</code></pre></div></div>
+
+<p>I immediately panicked, and reverted the <code class="language-plaintext highlighter-rouge">java.lang.String</code> change, and released <code class="language-plaintext highlighter-rouge">ignition-api</code> 8.1.13.post1.</p>
+
+<p>Searching the Internet gave me no answers. Apparently no one had seen or experienced something like this.</p>
+
+<p>Admitting defeat, I left things as they were for a while, but after a while I went back and followed the breadcrumbs - or should I say traceback?</p>
+
+<p><code class="language-plaintext highlighter-rouge">typing.py:1440</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">copy</span><span class="p">.</span><span class="n">_copy_dispatch</span><span class="p">[</span><span class="n">GenericMeta</span><span class="p">]</span> <span class="o">=</span> <span class="n">_copy_generic</span>
+</code></pre></div></div>
+
+<p>That was not it.</p>
+
+<p><code class="language-plaintext highlighter-rouge">java/lang/__init__.py:22</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>That was not meaningful.</p>
+
+<p><code class="language-plaintext highlighter-rouge">org/python/core/__init__.py:5</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">java.lang</span> <span class="kn">import</span> <span class="n">Object</span>
+</code></pre></div></div>
+
+<p>What??? Onto the next one.</p>
+
+<p><code class="language-plaintext highlighter-rouge">copy.py:60</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">org.python.core</span> <span class="kn">import</span> <span class="n">PyStringMap</span>  <span class="c1"># this is line 60
+</span><span class="k">except</span> <span class="nb">ImportError</span><span class="p">:</span>
+    <span class="n">PyStringMap</span> <span class="o">=</span> <span class="bp">None</span>
+</code></pre></div></div>
+
+<p>But why?</p>
+
+<p>If my mocking of <code class="language-plaintext highlighter-rouge">org.python.core</code> within <code class="language-plaintext highlighter-rouge">ignition-api</code> was to blame, wasn’t this supposed to be caught as the <code class="language-plaintext highlighter-rouge">ImportError</code>?</p>
+
+<p>The answer is: No.</p>
+
+<p>So I tried adding the following line, and same thing.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">PyStringMap</span> <span class="o">=</span> <span class="bp">None</span>
+</code></pre></div></div>
+
+<p>The solution came to me by accident, because while I was editing on Visual Studio Code it automatically added the <code class="language-plaintext highlighter-rouge">import</code> statement which solved my issue.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">PyStringMap</span>
+</code></pre></div></div>
+
+<p>Something I would have never thought of doing, but it fixed my issue. Issue <a href="https://github.com/ignition-api/8.1/issues/28"><code class="language-plaintext highlighter-rouge">ignition-api/8.1#28</code></a> was created and immediately fixed by PR <a href="https://github.com/ignition-api/8.1/pull/29"><code class="language-plaintext highlighter-rouge">ignition-api/8.1#29</code></a>.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff e4d494e 3beb4d5 src/org/python/core/__init__.py
+diff <span class="nt">--git</span> a/src/org/python/core/__init__.py b/src/org/python/core/__init__.py
+index 0f4e826..4f36856 100644
+<span class="nt">---</span> a/src/org/python/core/__init__.py
++++ b/src/org/python/core/__init__.py
+@@ <span class="nt">-1</span>,8 +1,15 @@
+ from __future__ import print_function
+
+<span class="nt">-__all__</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"PyObject"</span>, <span class="s2">"PyType"</span><span class="o">]</span>
++from copy import PyStringMap
+
+<span class="nt">-from</span> java.lang import Object
++__all__ <span class="o">=</span> <span class="o">[</span><span class="s2">"PyObject"</span>, <span class="s2">"PyStringMap"</span>, <span class="s2">"PyType"</span><span class="o">]</span>
+</code></pre></div></div>
+
+<p>And with that, my friends, the <code class="language-plaintext highlighter-rouge">AttributeError: 'module' object has no attribute '_copy_dispatch'</code> bug was squashed.</p>
+
+<p>Thanks for reading!</p>
+
+<p>P.S. <code class="language-plaintext highlighter-rouge">copy.py</code> lines 59-63 were committed by no other than <a href="https://github.com/gvanrossum">@gvanrossum</a> back in November 27, 2000 in <a href="https://github.com/python/cpython/commit/f8baad0f1759a5b26b050636fd327e874e17c5a0#diff-a06198e13686594114a45e7863b954a226ce08d43f724079faa7fe8b3c931703R59-R63"><code class="language-plaintext highlighter-rouge">f8baad0</code></a> which took 21 years to come bite me (or save me?)</p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#ignition-api">ignition-api</a>
+          
+            <a href="/tags#incendium">incendium</a>
+          
+            <a href="/tags#jython">jython</a>
+          
+            <a href="/tags#mypy">mypy</a>
+          
+            <a href="/tags#pip">pip</a>
+          
+            <a href="/tags#pypi">pypi</a>
+          
+            <a href="/tags#python">python</a>
+          
+            <a href="/tags#typing">typing</a>
+          
+        </div>
+      
+
+      
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2022/01/21/installing-starship-on-git-bash-for-windows/" data-toggle="tooltip" data-placement="top" title="Installing Starship on Git Bash for Windows">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2022/12/25/welcome-again/" data-toggle="tooltip" data-placement="top" title="Welcome Again">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'qmr0.github.io';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:amdqmr@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/qmr0" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/kamruddindia" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/kamruddinahmed" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Kamruddin Ahmed
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">qmr0.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

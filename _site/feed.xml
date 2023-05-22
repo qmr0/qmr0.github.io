@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    
+    <title>Kamruddin Ahmed - Data Analyst</title>
+    
+    
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>CI/CD - The April 2023 Python 2 apocalypse</title>
+        <description>
+          
+          Let’s begin by addressing why I still use Python 2. Why Python 2? I’ve written multiple times about Python 2...
+        </description>
+        <pubDate>Sun, 30 Apr 2023 00:14:00 +0200</pubDate>
+        <link>http://localhost:4000/2023/04/30/ci-cd-the-april-2023-python-2-apocalypse/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023/04/30/ci-cd-the-april-2023-python-2-apocalypse/</guid>
+      </item>
+    
+      <item>
+        <title>Installing pyenv and managing Python versions in Ubuntu</title>
+        <description>
+          From macOS to Ubuntu, Pt. 2 - 
+          Read Part 1 here. Coming from macOS into Ubuntu required some “getting used to things”. Like using apt (and nala),...
+        </description>
+        <pubDate>Fri, 10 Mar 2023 23:35:00 +0100</pubDate>
+        <link>http://localhost:4000/2023/03/10/installing-pyenv-and-managing-python-versions-in-ubuntu/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023/03/10/installing-pyenv-and-managing-python-versions-in-ubuntu/</guid>
+      </item>
+    
+      <item>
+        <title>Taking a ten-year-old MacBook Air out for one last ride with Ubuntu</title>
+        <description>
+          From macOS to Ubuntu, Pt. 1 - 
+          When I started this blog I wrote about reinstalling macOS 10.15, better know as Catalina, on my Mid 2012 13”...
+        </description>
+        <pubDate>Sat, 18 Feb 2023 21:42:00 +0100</pubDate>
+        <link>http://localhost:4000/2023/02/18/taking-a-ten-year-old-macbook-air-out-for-one-last-ride-with-ubuntu/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023/02/18/taking-a-ten-year-old-macbook-air-out-for-one-last-ride-with-ubuntu/</guid>
+      </item>
+    
+      <item>
+        <title>Upcoming articles in 2023</title>
+        <description>
+          
+          Hello, readers! These are some of the upcoming articles in this space. Taking a ten-year-old MacBook Air out for one...
+        </description>
+        <pubDate>Tue, 07 Feb 2023 23:13:00 +0100</pubDate>
+        <link>http://localhost:4000/2023/02/07/upcoming-articles-in-2023/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023/02/07/upcoming-articles-in-2023/</guid>
+      </item>
+    
+      <item>
+        <title>Welcome Again</title>
+        <description>
+          Or getting started with Jekyll and GitHub Pages (December 2022 Edition) - 
+          After a little over 10 years, my trustful MacBook Air (13-inch, Mid 2012) has recently died. And as it was...
+        </description>
+        <pubDate>Sun, 25 Dec 2022 02:14:00 +0100</pubDate>
+        <link>http://localhost:4000/2022/12/25/welcome-again/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/12/25/welcome-again/</guid>
+      </item>
+    
+      <item>
+        <title>Adventures in typing</title>
+        <description>
+          The &quot;obscure&quot; AttributeError exception - 
+          Python packaging series: Lessons learned in packaging Python projects ignition-api package and typing Welcome to the third installment of what...
+        </description>
+        <pubDate>Fri, 19 Aug 2022 01:43:00 +0200</pubDate>
+        <link>http://localhost:4000/2022/08/19/adventures-in-typing/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/08/19/adventures-in-typing/</guid>
+      </item>
+    
+      <item>
+        <title>Installing Starship on Git Bash for Windows</title>
+        <description>
+          No Windows Subsystem for Linux required - 
+          Terminal-wise I feel more comfortable in macOS than Windows (Command Prompt or PowerShell), so it makes sense for me to...
+        </description>
+        <pubDate>Fri, 21 Jan 2022 23:15:00 +0100</pubDate>
+        <link>http://localhost:4000/2022/01/21/installing-starship-on-git-bash-for-windows/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/01/21/installing-starship-on-git-bash-for-windows/</guid>
+      </item>
+    
+      <item>
+        <title>Ignition 8.1.13 - Release</title>
+        <description>
+          
+          Installation python2 -m pip install --upgrade ignition-api New in 8.1.13 Scripting A new historical tag record will now be created...
+        </description>
+        <pubDate>Fri, 24 Dec 2021 00:26:00 +0100</pubDate>
+        <link>http://localhost:4000/2021/12/24/ignition-8-1-13-release/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/12/24/ignition-8-1-13-release/</guid>
+      </item>
+    
+      <item>
+        <title>ignition-api package and typing</title>
+        <description>
+          
+          Many things have changed since my last post, and I will do my best to do a count of the...
+        </description>
+        <pubDate>Sat, 11 Dec 2021 02:20:00 +0100</pubDate>
+        <link>http://localhost:4000/2021/12/11/ignition-api-package-and-typing/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/12/11/ignition-api-package-and-typing/</guid>
+      </item>
+    
+      <item>
+        <title>Lessons learned in packaging Python projects</title>
+        <description>
+          
+          Recently I embarked upon a mission, and that mission was to package my Ignition project, which was built based on...
+        </description>
+        <pubDate>Wed, 27 Oct 2021 00:39:00 +0200</pubDate>
+        <link>http://localhost:4000/2021/10/27/lessons-learned-in-packaging-python-projects/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/10/27/lessons-learned-in-packaging-python-projects/</guid>
+      </item>
+    
+      <item>
+        <title>I&apos;m still around</title>
+        <description>
+          
+          Well, hello there! I know it’s been a while since we last spoke, but I wanted to let you know...
+        </description>
+        <pubDate>Tue, 12 Oct 2021 21:34:00 +0200</pubDate>
+        <link>http://localhost:4000/2021/10/12/i-m-still-around/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/10/12/i-m-still-around/</guid>
+      </item>
+    
+      <item>
+        <title>How to add Python installed via Homebrew to pyenv versions</title>
+        <description>
+          
+          Hello, friends! As I have mentioned before, I am using pyenv to manage multiple Python installations, but since I installed...
+        </description>
+        <pubDate>Mon, 28 Jun 2021 22:10:00 +0200</pubDate>
+        <link>http://localhost:4000/2021/06/28/how-to-add-python-installed-via-homebrew-to-pyenv-versions/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/06/28/how-to-add-python-installed-via-homebrew-to-pyenv-versions/</guid>
+      </item>
+    
+      <item>
+        <title>Of camels and snakes</title>
+        <description>
+          and Blaise Pascal eating a kebab in Hungary - 
+          This article was originally meant to be posted before pre-commit.ci and pydocstyle join the family, but it has now become...
+        </description>
+        <pubDate>Sun, 27 Jun 2021 08:06:00 +0200</pubDate>
+        <link>http://localhost:4000/2021/06/27/of-camels-and-snakes/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/06/27/of-camels-and-snakes/</guid>
+      </item>
+    
+      <item>
+        <title>pre-commit.ci and pydocstyle join the family</title>
+        <description>
+          
+          Welcome to part 3 on coding standards and code quality; these are part 1, and part 2. This time we...
+        </description>
+        <pubDate>Mon, 21 Jun 2021 22:38:00 +0200</pubDate>
+        <link>http://localhost:4000/2021/06/21/pre-commit-ci-and-pydocstyle-join-the-family/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/06/21/pre-commit-ci-and-pydocstyle-join-the-family/</guid>
+      </item>
+    
+      <item>
+        <title>The one-liner for updating PIP and all outdated packages</title>
+        <description>
+          
+          I spend most of my time working on a Windows machine for work-related projects, and for some personal projects I...
+        </description>
+        <pubDate>Wed, 26 May 2021 23:59:00 +0200</pubDate>
+        <link>http://localhost:4000/2021/05/26/the-one-liner-for-updating-pip-and-all-outdated-packages/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/05/26/the-one-liner-for-updating-pip-and-all-outdated-packages/</guid>
+      </item>
+    
+      <item>
+        <title>Ignition 8.1.5 - Release</title>
+        <description>
+          
+          New in 8.1.5 Scripting Functions Added system.perspective.navigateForward and system.perspective.navigateBack scripting methods, which operate similar to a browsers forward and back...
+        </description>
+        <pubDate>Thu, 29 Apr 2021 20:58:00 +0200</pubDate>
+        <link>http://localhost:4000/2021/04/29/ignition-8-1-5-release/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/04/29/ignition-8-1-5-release/</guid>
+      </item>
+    
+      <item>
+        <title>Ignition 8.1.4 - Release</title>
+        <description>
+          
+          This release is for Ignition 8.1.4, and 8.1.4-jython. 8.1.4 Repository: thecesrom/Ignition · Tag: v8.1.4 · Commit: b4c6cb7 · Released by:...
+        </description>
+        <pubDate>Sat, 03 Apr 2021 03:10:00 +0200</pubDate>
+        <link>http://localhost:4000/2021/04/03/ignition-8-1-4-release/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/04/03/ignition-8-1-4-release/</guid>
+      </item>
+    
+      <item>
+        <title>How I use black, flake8 and isort to format Python2 code</title>
+        <description>
+          and how I put it all together with pre-commit - 
+          Welcome to part 2 of my series on how code formatters can assist in producing easy-to-read code, and hopefully easy...
+        </description>
+        <pubDate>Sun, 07 Mar 2021 03:35:00 +0100</pubDate>
+        <link>http://localhost:4000/2021/03/07/how-i-use-black-flake8-and-isort-to-format-python2-code/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/03/07/how-i-use-black-flake8-and-isort-to-format-python2-code/</guid>
+      </item>
+    
+      <item>
+        <title>Troubleshooting GPG signed commits on macOS</title>
+        <description>
+          
+          Introduction I’ve been using GitHub for the past couple of years, but it was not until last year that my...
+        </description>
+        <pubDate>Wed, 27 Jan 2021 20:24:00 +0100</pubDate>
+        <link>http://localhost:4000/2021/01/27/troubleshooting-gpg-signed-commits-on-macos/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/01/27/troubleshooting-gpg-signed-commits-on-macos/</guid>
+      </item>
+    
+      <item>
+        <title>79 characters</title>
+        <description>
+          On Python code style, and formatters - 
+          Inspired by Daniel Stenberg’s blog post1, hereby I declare myself as a 79-character purist. When I started using PyCharm for...
+        </description>
+        <pubDate>Tue, 22 Dec 2020 23:37:00 +0100</pubDate>
+        <link>http://localhost:4000/2020/12/22/79-characters/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/12/22/79-characters/</guid>
+      </item>
+    
+  </channel>
+</rss>

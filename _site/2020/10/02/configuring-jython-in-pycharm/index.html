@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Configuring Jython in PyCharm</title>
+
+  
+  <meta name="author" content="Kamruddin Ahmed">
+  
+
+  <meta name="description" content="How I struggled and eventually succeeded, so you don't have to">
+
+  
+
+  
+  <meta name="keywords" content="azure,cesrom,coatl,coatl.dev,coatl-dev,__coatldev__,data,homebrew,macos,pycharm,python,sql,thecesrom,vscode">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Kamruddin Ahmed - Data Analyst" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Kamruddin Ahmed - Data Analyst">
+  <meta property="og:title" content="Configuring Jython in PyCharm">
+  <meta property="og:description" content="How I struggled and eventually succeeded, so you don't have to">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Kamruddin Ahmed">
+  <meta property="og:article:published_time" content="2020-10-02T04:02:00+02:00">
+  <meta property="og:url" content="http://localhost:4000/2020/10/02/configuring-jython-in-pycharm/">
+  <link rel="canonical" href="http://localhost:4000/2020/10/02/configuring-jython-in-pycharm/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@kamruddindia">
+  <meta name="twitter:creator" content="@kamruddindia">
+
+  <meta property="twitter:title" content="Configuring Jython in PyCharm">
+  <meta property="twitter:description" content="How I struggled and eventually succeeded, so you don't have to">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Kamruddin Ahmed - Data Analyst</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archive">Archive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li></ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/profile.jpg" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Configuring Jython in PyCharm</h1>
+          
+            
+              <h2 class="post-subheading">How I struggled and eventually succeeded, so you don't have to</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on 2020-10-02</span>
+            
+              <span class="post-meta">
+                <span class="d-none d-md-inline middot">&middot;</span>
+                Last updated 2021-01-28
+              </span>
+            
+            
+              <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="post-meta"><span class="d-none d-md-inline middot">&middot;</span> 4 minute read</span>
+
+
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="#what-is-jython">What is Jython?</a></li>
+  <li><a href="#why-do-i-use-jython">Why do I use Jython?</a></li>
+  <li><a href="#jython-within-ignition">Jython within Ignition</a></li>
+  <li><a href="#installing-jython-on-macos">Installing Jython on macOS</a></li>
+  <li><a href="#configuring-jython-in-pycharm">Configuring Jython in PyCharm</a></li>
+  <li><a href="#conclusion">Conclusion</a></li>
+  <li><a href="#sources">Sources</a></li>
+</ul>
+
+<h3 id="what-is-jython">What is Jython?<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup></h3>
+
+<p>Jython is a Java implementation of Python that combines expressive power with clarity. Jython is freely available for both commercial and non-commercial use and is distributed with source code under the PSF License v2. Jython is complementary to Java and is especially suited for the following tasks:</p>
+
+<ul>
+  <li>Embedded scripting - Java programmers can add the Jython libraries to their system to allow end users to write simple or complicated scripts that add functionality to the application.</li>
+  <li>Interactive experimentation - Jython provides an interactive interpreter that can be used to interact with Java packages or with running Java applications. This allows programmers to experiment and debug any Java system using Jython.</li>
+  <li>Rapid application development - Python programs are typically 2-10x shorter than the equivalent Java program. This translates directly to increased programmer productivity. The seamless interaction between Python and Java allows developers to freely mix the two languages both during development and in shipping products.</li>
+</ul>
+
+<h3 id="why-do-i-use-jython">Why do I use Jython?</h3>
+
+<p>That’s a good question, and the answer is because at work I am one of the developers for <a href="https://en.wikipedia.org/wiki/SCADA" target="_blank">SCADA</a> applications using the <a href="https://inductiveautomation.com/ignition/" target="_blank">Ignition</a> platform.</p>
+
+<blockquote>
+  <p><strong>Where is scripting used?</strong><sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup></p>
+
+  <p>[J]ython is used in many places in Ignition. Each location has its own events that trigger your scripts to run, and add functionality to your projects in different ways.</p>
+</blockquote>
+
+<h3 id="jython-within-ignition">Jython within Ignition</h3>
+
+<p><a href="https://inductiveautomation.com/downloads/ignition/8.0.16" target="_blank">Ignition 8.0.16</a> (the latest stable version as of the date of this post) ships with Jython 2.7.1, and Zulu11.39+16-SA (build 11.0.7+10-LTS). All of this means that we have access to both worlds; <a href="https://docs.python.org/2/" target="_blank">Python 2.7</a>, and <a href="https://docs.oracle.com/en/java/javase/11/docs/api/index.html" target="_blank">Java 11</a>.</p>
+
+<p>And we are able to define the following function:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">javax.swing</span> <span class="kn">import</span> <span class="n">JOptionPane</span>
+
+<span class="k">def</span> <span class="nf">warning</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">'Warning'</span><span class="p">):</span>
+    <span class="s">"""Displays a message to the user in a warning style popup dialog.
+
+    Args:
+        message (str): The message to display in an warning box.
+        title (str): A title for the warning box. Optional.
+    """</span>
+    <span class="n">JOptionPane</span><span class="p">.</span><span class="n">showMessageDialog</span><span class="p">(</span>
+        <span class="bp">None</span><span class="p">,</span>
+        <span class="n">message</span><span class="p">,</span>
+        <span class="n">title</span><span class="p">,</span>
+        <span class="n">JOptionPane</span><span class="p">.</span><span class="n">WARNING_MESSAGE</span>
+    <span class="p">)</span>
+</code></pre></div></div>
+
+<p>And when we call it like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">warning</span><span class="p">(</span><span class="s">'This one is a warning.'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We get the following:</p>
+
+<p><img src="http://localhost:4000/assets/img/jython-warning.png" alt="jython-warning" class="mx-auto d-block" /></p>
+
+<h3 id="installing-jython-on-macos">Installing Jython on macOS</h3>
+
+<p class="box-error">Do not install Jython 2.7.2 as it is not currently supported by PyCharm. See <a href="https://youtrack.jetbrains.com/issue/PY-44759" target="_blank">PY-44759</a>.</p>
+
+<p>Since I intend to set up Jython as a Project Interpreter in PyCharm, and considering the versions used by Ignition, I’ll download the following:</p>
+
+<blockquote>
+  <p>Updated: 2021-01-28</p>
+</blockquote>
+
+<ol>
+  <li>Java 11
+    <ol>
+      <li>Via <a href="https://brew.sh/" target="_blank">Homebrew</a>.</li>
+    </ol>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> brew <span class="nb">install</span> <span class="nt">--cask</span> zulu11
+</code></pre></div>    </div>
+
+    <ol>
+      <li>Or from Azul for macOS (<a href="https://cdn.azul.com/zulu/bin/zulu11.39.15-ca-jdk11.0.7-macosx_x64.zip" target="_blank">.zip</a>, <a href="https://cdn.azul.com/zulu/bin/zulu11.39.15-ca-jdk11.0.7-macosx_x64.dmg" target="_blank">.dmg</a>, <a href="https://cdn.azul.com/zulu/bin/zulu11.39.15-ca-jdk11.0.7-macosx_x64.tar.gz" target="_blank">.tar.gz</a>).</li>
+    </ol>
+  </li>
+  <li>Jython 2.7.1
+    <ol>
+      <li>Via <a href="https://brew.sh/" target="_blank">Homebrew</a>. Just tap <a href="https://github.com/coatl-dev/homebrew-coatl-dev/" target="_blank">coatl-dev’s Homebrew tap</a>, and install <code class="language-plaintext highlighter-rouge">jython@2.7.1</code>:</li>
+    </ol>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> brew <span class="nb">install </span>coatl-dev/coatl-dev/jython@2.7.1
+</code></pre></div>    </div>
+
+    <p>Or</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> brew tap coatl-dev/coatl-dev
+ brew <span class="nb">install </span>jython@2.7.1
+</code></pre></div>    </div>
+
+    <ol>
+      <li>Or by downloading the installer <a href="https://search.maven.org/artifact/org.python/jython-installer/2.7.1/jar" target="_blank">Jython Installer v2.7.1</a></li>
+    </ol>
+  </li>
+</ol>
+
+<p>I decided to install both using <code class="language-plaintext highlighter-rouge">brew</code>.</p>
+
+<p>First <code class="language-plaintext highlighter-rouge">zulu11</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew <span class="nb">install</span> <span class="nt">--cask</span> zulu11
+<span class="o">==&gt;</span> Downloading https://cdn.azul.com/zulu/bin/zulu11.45.27-ca-jdk11.0.10-macosx_x64.dmg
+<span class="c">######################################################################## 100.0%</span>
+<span class="o">==&gt;</span> Installing Cask zulu11
+<span class="o">==&gt;</span> Running installer <span class="k">for </span>zulu11<span class="p">;</span> your password may be necessary.
+Package installers may write to any location<span class="p">;</span> options such as <span class="sb">`</span><span class="nt">--appdir</span><span class="sb">`</span> are ignored.
+Password:
+installer: Package name is Zulu 11.45+27
+installer: Upgrading at base path /
+installer: The upgrade was successful.
+🍺  zulu11 was successfully installed!
+</code></pre></div></div>
+
+<p>Then <code class="language-plaintext highlighter-rouge">jython@2.7.1</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew <span class="nb">install </span>coatl-dev/coatl-dev/jython@2.7.1
+<span class="o">==&gt;</span> Installing jython@2.7.1 from coatl-dev/coatl-dev
+<span class="o">==&gt;</span> Downloading https://search.maven.org/remotecontent?filepath<span class="o">=</span>org/python/jython-installer/2.7.1/jython-installer-2.7.1
+<span class="o">==&gt;</span> Downloading from https://repo1.maven.org/maven2/org/python/jython-installer/2.7.1/jython-installer-2.7.1.jar
+<span class="c">######################################################################## 100.0%</span>
+<span class="o">==&gt;</span> java <span class="nt">-jar</span> /Users/thecesrom/Library/Caches/Homebrew/downloads/558a886fedd7c18b1e12419bd4ab398b3ad7aaa902df4f5686ef3b695b89f2b9--jython-installer-2.7.1.jar <span class="nt">-s</span> <span class="nt">-d</span> /usr/local/Cellar/jython@2.7.1/2.7.1/libexec
+🍺  /usr/local/Cellar/jython@2.7.1/2.7.1: 3,785 files, 148.7MB, built <span class="k">in </span>1 minute 22 seconds
+</code></pre></div></div>
+
+<p><strong>NOTE:</strong> There is a warning when running <code class="language-plaintext highlighter-rouge">jython</code> with Java 11, but everything works fine.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jython
+WARNING: An illegal reflective access operation has occurred
+Illegal reflective access by org.python.core.PySystemState <span class="o">(</span>file:/usr/local/Cellar/jython@2.7.1/2.7.1/libexec/jython.jar<span class="o">)</span> to method java.io.Console.encoding<span class="o">()</span>
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use <span class="nt">--illegal-access</span><span class="o">=</span>warn to <span class="nb">enable </span>warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied <span class="k">in </span>a future release
+Jython 2.7.1 <span class="o">(</span>default:0df7adb1b397, Jun 30 2017, 19:02:43<span class="o">)</span>
+<span class="o">[</span>OpenJDK 64-Bit Server VM <span class="o">(</span>Azul Systems, Inc.<span class="o">)]</span> on java11.0.7
+</code></pre></div></div>
+
+<p>To circumvent this, you must run Jython with the following flags:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jython <span class="nt">-J--add-opens</span><span class="o">=</span>java.base/java.io<span class="o">=</span>ALL-UNNAMED <span class="nt">-J--add-opens</span><span class="o">=</span>java.base/java.lang<span class="o">=</span>ALL-UNNAMED <span class="nt">-J--add-opens</span><span class="o">=</span>java.base/java.nio<span class="o">=</span>ALL-UNNAMED <span class="nt">-J--add-opens</span><span class="o">=</span>java.base/sun.nio.ch<span class="o">=</span>ALL-UNNAMED <span class="nt">-J--add-opens</span><span class="o">=</span>java.desktop/sun.awt<span class="o">=</span>ALL-UNNAMED <span class="nt">-J--add-opens</span><span class="o">=</span>java.desktop/sun.lwawt.macosx<span class="o">=</span>ALL-UNNAMED
+Jython 2.7.1 <span class="o">(</span>default:0df7adb1b397, Jun 30 2017, 19:02:43<span class="o">)</span>
+<span class="o">[</span>OpenJDK 64-Bit Server VM <span class="o">(</span>Azul Systems, Inc.<span class="o">)]</span> on java11.0.7
+Type <span class="s2">"help"</span>, <span class="s2">"copyright"</span>, <span class="s2">"credits"</span> or <span class="s2">"license"</span> <span class="k">for </span>more information.
+<span class="o">&gt;&gt;&gt;</span>
+</code></pre></div></div>
+
+<h3 id="configuring-jython-in-pycharm">Configuring Jython in PyCharm</h3>
+
+<ol>
+  <li>Open or create a project</li>
+  <li>Open <strong>Preferences</strong> (⌘+,)</li>
+  <li>Navigate to <strong>Preferences &gt; Project &gt; Project Interpreter</strong></li>
+  <li>Click on the gear icon and select <strong>Add…</strong></li>
+  <li>Choose <strong>System Intepreter</strong></li>
+  <li>Select <strong>/usr/local/bin/jython</strong> from the <strong>Interpreter</strong> list, and click <strong>OK</strong></li>
+  <li>PyCharm will name it <strong>Jython 2.7</strong> by default, but you can change it</li>
+  <li>
+    <p>Finally go to <strong>Preferences &gt; Build, Execution, Deployment &gt; Console &gt; Python Console</strong> and add the following flags as <strong>Interpreter options</strong></p>
+
+    <div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="py">-J--add-opens</span><span class="p">=</span><span class="s">java.base/java.io=ALL-UNNAMED</span>
+ <span class="py">-J--add-opens</span><span class="p">=</span><span class="s">java.base/java.lang=ALL-UNNAMED</span>
+ <span class="py">-J--add-opens</span><span class="p">=</span><span class="s">java.base/java.nio=ALL-UNNAMED</span>
+ <span class="py">-J--add-opens</span><span class="p">=</span><span class="s">java.base/sun.nio.ch=ALL-UNNAMED</span>
+ <span class="py">-J--add-opens</span><span class="p">=</span><span class="s">java.desktop/sun.awt=ALL-UNNAMED</span>
+ <span class="py">-J--add-opens</span><span class="p">=</span><span class="s">java.desktop/sun.lwawt.macosx=ALL-UNNAMED</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>To test it I will be using the <a href="https://github.com/thecesrom/Ignition/tree/jython" target="_blank">jython</a> branch of my <a href="https://github.com/thecesrom/Ignition" target="_blank">Ignition</a> project.</p>
+
+<p>And when I run the Python Console I can do the following:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">java.util</span> <span class="kn">import</span> <span class="n">Date</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">now</span> <span class="o">=</span> <span class="n">Date</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">now</span>
+<span class="n">Thu</span> <span class="n">Oct</span> <span class="mi">01</span> <span class="mi">19</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">27</span> <span class="n">PDT</span> <span class="mi">2020</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nb">type</span> <span class="s">'java.util.Date'</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>And just like the example in <a href="#jython-within-ignition">Jython within Ignition</a>, I get the same pop-up by running the following code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">system.gui</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">system</span><span class="p">.</span><span class="n">gui</span><span class="p">.</span><span class="n">warningBox</span><span class="p">(</span><span class="s">'This one is a warning.'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/img/jython-warning.png" alt="jython-warning" class="mx-auto d-block" /></p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>And with that, my friends, you are all set.</p>
+
+<p>Thanks, for reading.</p>
+
+<h3 id="sources">Sources</h3>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Jython - <a href="https://www.jython.org/" target="_blank">link</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>Ignition User Manual 8.0 - <a href="https://docs.inductiveautomation.com/display/DOC80/Scripting#Scripting-WhereIsScriptingUsed?" target="_blank">link</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#guide">guide</a>
+          
+            <a href="/tags#ignition">ignition</a>
+          
+            <a href="/tags#jython">jython</a>
+          
+            <a href="/tags#macos">macos</a>
+          
+            <a href="/tags#pycharm">pycharm</a>
+          
+        </div>
+      
+
+      
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2020/09/21/working-with-pyenv-on-macos/" data-toggle="tooltip" data-placement="top" title="Working with pyenv on macOS">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2020/10/15/how-to-verify-your-github-organization-s-domain-on-google-domains/" data-toggle="tooltip" data-placement="top" title="How to verify your GitHub Organization's domain on Google Domains">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'qmr0.github.io';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:amdqmr@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/qmr0" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/kamruddindia" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/kamruddinahmed" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Kamruddin Ahmed
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">qmr0.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

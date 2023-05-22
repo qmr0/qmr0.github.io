@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Installing Starship on Git Bash for Windows</title>
+
+  
+  <meta name="author" content="Kamruddin Ahmed">
+  
+
+  <meta name="description" content="No Windows Subsystem for Linux required">
+
+  
+
+  
+  <meta name="keywords" content="azure,cesrom,coatl,coatl.dev,coatl-dev,__coatldev__,data,homebrew,macos,pycharm,python,sql,thecesrom,vscode">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Kamruddin Ahmed - Data Analyst" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Kamruddin Ahmed - Data Analyst">
+  <meta property="og:title" content="Installing Starship on Git Bash for Windows">
+  <meta property="og:description" content="No Windows Subsystem for Linux required">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Kamruddin Ahmed">
+  <meta property="og:article:published_time" content="2022-01-21T23:15:00+01:00">
+  <meta property="og:url" content="http://localhost:4000/2022/01/21/installing-starship-on-git-bash-for-windows/">
+  <link rel="canonical" href="http://localhost:4000/2022/01/21/installing-starship-on-git-bash-for-windows/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@kamruddindia">
+  <meta name="twitter:creator" content="@kamruddindia">
+
+  <meta property="twitter:title" content="Installing Starship on Git Bash for Windows">
+  <meta property="twitter:description" content="No Windows Subsystem for Linux required">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Kamruddin Ahmed - Data Analyst</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archive">Archive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li></ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/profile.jpg" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Installing Starship on Git Bash for Windows</h1>
+          
+            
+              <h2 class="post-subheading">No Windows Subsystem for Linux required</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on 2022-01-21</span>
+            
+              <span class="post-meta">
+                <span class="d-none d-md-inline middot">&middot;</span>
+                Last updated 2022-03-14
+              </span>
+            
+            
+              <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="post-meta"><span class="d-none d-md-inline middot">&middot;</span> 3 minute read</span>
+
+
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <p>Terminal-wise I feel more comfortable in macOS than Windows (Command Prompt or PowerShell), so it makes sense for me to say that the best feature of Git for Windows is definitely Git Bash.</p>
+
+<blockquote>
+  <p>Git BASH</p>
+
+  <p>Git for Windows provides a BASH emulation used to run Git from the command line. *NIX users should feel right at home, as the BASH emulation behaves just like the “git” command in LINUX and UNIX environments.</p>
+</blockquote>
+
+<p>I heard of <a href="https://starship.rs/">Starship</a> on episode <a href="https://talkpython.fm/episodes/show/345/10-tips-and-tools-for-developer-productivity">#345</a> of the Talk Python To Me podcast, and while I’m already using <a href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a> on macOS, and <a href="https://ohmyposh.dev/">Oh My Posh</a> on Windows, I wanted to find a way to get more out of Git Bash and thought Starship would be a perfect candidate.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>A <a href="https://www.nerdfonts.com/">Nerd Font</a> installed and enabled in your terminal.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>If you were to try installing Starship with the suggested command, you would get an error like the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-sS</span> https://starship.rs/install.sh | sh <span class="nt">-s</span>
+
+  Configuration
+<span class="o">&gt;</span> Bin directory: /usr/local/bin
+<span class="o">&gt;</span> Platform:      pc-windows-msvc
+<span class="o">&gt;</span> Arch:          x86_64
+
+<span class="o">&gt;</span> Tarball URL: https://github.com/starship/starship/releases/latest/download/starship-x86_64-pc-windows-msvc.zip
+? Install Starship latest to /usr/local/bin? <span class="o">[</span>y/N] y
+x Installation location /usr/local/bin does not appear to be a directory
+<span class="o">&gt;</span> Make sure the location exists and is a directory, <span class="k">then </span>try again.
+install.sh <span class="o">[</span>option]
+
+Fetch and <span class="nb">install </span>the latest version of starship, <span class="k">if </span>starship is already
+installed it will be updated to the latest version.
+
+Options
+        <span class="nt">-V</span>, <span class="nt">--verbose</span>
+                Enable verbose output <span class="k">for </span>the installer
+
+        <span class="nt">-f</span>, <span class="nt">-y</span>, <span class="nt">--force</span>, <span class="nt">--yes</span>
+                Skip the confirmation prompt during installation
+
+        <span class="nt">-p</span>, <span class="nt">--platform</span>
+                Override the platform identified by the installer <span class="o">[</span>default: pc-windows-msvc]
+
+        <span class="nt">-b</span>, <span class="nt">--bin-dir</span>
+                Override the bin installation directory <span class="o">[</span>default: /usr/local/bin]
+
+        <span class="nt">-a</span>, <span class="nt">--arch</span>
+                Override the architecture identified by the installer <span class="o">[</span>default: x86_64]
+
+        <span class="nt">-B</span>, <span class="nt">--base-url</span>
+                Override the base URL used <span class="k">for </span>downloading releases <span class="o">[</span>default: https://github.com/starship/starship/releases]
+
+        <span class="nt">-h</span>, <span class="nt">--help</span>
+                Display this <span class="nb">help </span>message
+</code></pre></div></div>
+
+<p>And this is because the <code class="language-plaintext highlighter-rouge">/usr</code> directory is locked. So the alternative, as suggested by the output above, is to override the bin installation directory.</p>
+
+<p>I chose to do the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.local/bin"</span>
+<span class="nv">$ </span>curl <span class="nt">-sS</span> https://starship.rs/install.sh | sh <span class="nt">-s</span> <span class="nt">--</span> <span class="nt">--bin-dir</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.local/bin"</span>
+
+  Configuration
+<span class="o">&gt;</span> Bin directory: /c/Users/thecesrom/.local/bin
+<span class="o">&gt;</span> Platform:      pc-windows-msvc
+<span class="o">&gt;</span> Arch:          x86_64
+
+<span class="o">&gt;</span> Tarball URL: https://github.com/starship/starship/releases/latest/download/starship-x86_64-pc-windows-msvc.zip
+? Install Starship latest to /c/Users/thecesrom/.local/bin? <span class="o">[</span>y/N] y
+<span class="o">!</span> Bin directory /c/Users/thecesrom/.local/bin is not <span class="k">in </span>your <span class="nv">$PATH</span>
+<span class="o">&gt;</span> Installing Starship, please <span class="nb">wait</span>…
+✓ Starship installed
+
+<span class="o">&gt;</span> Please follow the steps <span class="k">for </span>your shell to <span class="nb">complete </span>the installation:
+  bash
+  Add the following to the end of ~/.bashrc:
+
+        <span class="nb">eval</span> <span class="s2">"</span><span class="si">$(</span>starship init bash<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>Add the Starship bin directory to your <code class="language-plaintext highlighter-rouge">$PATH</code> and update your <code class="language-plaintext highlighter-rouge">~/.bashrc</code> file as suggested, and you should be ready to go.</p>
+
+<h2 id="updating-to-latest">Updating to latest</h2>
+
+<p>I am watching the Starship <a href="https://github.com/starship/starship">repo</a> to be notified about releases, so for upgrading I created a simple bash file called <code class="language-plaintext highlighter-rouge">starship-upgrade.sh</code> sitting on my <code class="language-plaintext highlighter-rouge">$HOME</code> directory with the same command from the previous step. Like this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/bash</span>
+
+curl <span class="nt">-sS</span> https://starship.rs/install.sh | sh <span class="nt">-s</span> <span class="nt">--</span> <span class="nt">--yes</span> <span class="nt">--bin-dir</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.local/bin"</span>
+
+</code></pre></div></div>
+
+<p>And just by running that script I am able to update.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">.</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/starship-upgrade.sh"</span>
+
+  Configuration
+<span class="o">&gt;</span> Bin directory: /c/Users/thecesrom/.local/bin
+<span class="o">&gt;</span> Platform:      pc-windows-msvc
+<span class="o">&gt;</span> Arch:          x86_64
+
+<span class="o">&gt;</span> Tarball URL: https://github.com/starship/starship/releases/latest/download/starship-x86_64-pc-windows-msvc.zip
+? Install Starship latest to /c/Users/thecesrom/.local/bin? <span class="o">[</span>y/N] y
+<span class="o">&gt;</span> Installing Starship, please <span class="nb">wait</span>…
+✓ Starship installed
+</code></pre></div></div>
+
+<p><del>Even though I have added the custom Starship bin directory to my <code class="language-plaintext highlighter-rouge">$PATH</code> I am warned it is not found, but in my experience this can be dismissed.</del></p>
+
+<h2 id="update-1-2022-03-09">Update #1: 2022-03-09</h2>
+
+<p>Since this post was first published I have learned that the issue I initially reported was partially my mistake, as I was passing the path to the <code class="language-plaintext highlighter-rouge">bin-dir</code> with a trailing forward slash (<code class="language-plaintext highlighter-rouge">/</code>) at the end, and in my <code class="language-plaintext highlighter-rouge">$PATH</code> the directory existed without the trailing forward slash. Ref: <a href="https://github.com/starship/starship/issues/1310">starship#1310</a>, <a href="https://github.com/starship/starship/issues/1341">starship#1341</a>, and <a href="https://github.com/starship/starship/discussions/3486">starship#3486</a> which resulted in the creation of <a href="https://github.com/starship/starship/issues/3493">starship#3493</a> by <a href="https://github.com/chipbuster">chipbuster</a>.</p>
+
+<p>So, in order to fix any unintentional mistake like this in the future, I have created a PR (<a href="https://github.com/starship/starship/pull/3723">starship#3723</a>) to prevent false-negatives in case another user makes the same “mistake”.</p>
+
+<h2 id="update-2-2022-03-11">Update #2: 2022-03-11</h2>
+
+<p>PR (<a href="https://github.com/starship/starship/pull/3723">starship#3723</a>) was merged and it has been shipped with version <a href="https://github.com/starship/starship/tree/v1.4.2"><code class="language-plaintext highlighter-rouge">1.4.2</code></a>.</p>
+
+<p>Thanks for reading!</p>
+
+<h2 id="other-interesting-posts">Other interesting posts</h2>
+
+<ul>
+  <li>Alan P. Barber. <a href="https://alanbarber.com/post/how-to-customize-the-git-for-windows-bash-shell-prompt/">“How To Customize The Git For Windows Bash Shell Prompt”</a>.</li>
+  <li>Changhui Xu. <a href="https://blog.devgenius.io/how-to-customize-the-git-bash-shell-prompt-336f6aefcf3f">“How to Customize the Git Bash Shell Prompt”</a>.</li>
+  <li>Blikoor. <a href="https://dev.to/blikoor/customize-git-bash-shell-498l">“Customize Git Bash shell”</a></li>
+  <li>Guilherme_Konan. <a href="https://dev.to/gmkonan/customizing-git-bash-in-windows-2al3">“Customizing Git Bash in Windows”</a>.</li>
+</ul>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#bash">bash</a>
+          
+            <a href="/tags#git">git</a>
+          
+            <a href="/tags#guide">guide</a>
+          
+            <a href="/tags#howto">howto</a>
+          
+            <a href="/tags#quick-take">quick-take</a>
+          
+            <a href="/tags#shell">shell</a>
+          
+            <a href="/tags#terminal">terminal</a>
+          
+            <a href="/tags#windows">windows</a>
+          
+        </div>
+      
+
+      
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021/12/24/ignition-8-1-13-release/" data-toggle="tooltip" data-placement="top" title="Ignition 8.1.13 - Release">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2022/08/19/adventures-in-typing/" data-toggle="tooltip" data-placement="top" title="Adventures in typing">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'qmr0.github.io';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:amdqmr@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/qmr0" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/kamruddindia" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/kamruddinahmed" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Kamruddin Ahmed
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">qmr0.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>CI/CD - The April 2023 Python 2 apocalypse</title>
+
+  
+  <meta name="author" content="Kamruddin Ahmed">
+  
+
+  <meta name="description" content="Let’s begin by addressing why I still use Python 2. Why Python 2? I’ve written multiple times about Python 2...">
+
+  
+
+  
+  <meta name="keywords" content="azure,cesrom,coatl,coatl.dev,coatl-dev,__coatldev__,data,homebrew,macos,pycharm,python,sql,thecesrom,vscode">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Kamruddin Ahmed - Data Analyst" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Kamruddin Ahmed - Data Analyst">
+  <meta property="og:title" content="CI/CD - The April 2023 Python 2 apocalypse">
+  <meta property="og:description" content="Let’s begin by addressing why I still use Python 2. Why Python 2? I’ve written multiple times about Python 2...">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Kamruddin Ahmed">
+  <meta property="og:article:published_time" content="2023-04-30T00:14:00+02:00">
+  <meta property="og:url" content="http://localhost:4000/2023/04/30/ci-cd-the-april-2023-python-2-apocalypse/">
+  <link rel="canonical" href="http://localhost:4000/2023/04/30/ci-cd-the-april-2023-python-2-apocalypse/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@kamruddindia">
+  <meta name="twitter:creator" content="@kamruddindia">
+
+  <meta property="twitter:title" content="CI/CD - The April 2023 Python 2 apocalypse">
+  <meta property="twitter:description" content="Let’s begin by addressing why I still use Python 2. Why Python 2? I’ve written multiple times about Python 2...">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Kamruddin Ahmed - Data Analyst</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archive">Archive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li></ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/profile.jpg" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>CI/CD - The April 2023 Python 2 apocalypse</h1>
+          
+
+          
+            <span class="post-meta">Posted on 2023-04-30</span>
+            
+            
+              <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="post-meta"><span class="d-none d-md-inline middot">&middot;</span> 2 minute read</span>
+
+
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <p>Let’s begin by addressing why I still use Python 2.</p>
+
+<h2 id="why-python-2">Why Python 2?</h2>
+
+<p>I’ve written multiple times about <a href="http://localhost:4000/tags#python2">Python 2</a> and how I still use it for work and personal projects both locally and on my CI/CD pipelines on GitHub and Azure DevOps.</p>
+
+<p>I am well aware Python 2 reached EOL, but I thought I had more time to stop using Python 2.7, and I based that on Ubuntu’s <a href="https://ubuntu.com/about/release-cycle">lifecycle</a>. <a href="https://ubuntu.com/about/release-cycle#ubuntu">Ubuntu 20.04</a>, as an LTS release, it will be supported by Canonical until <a href="https://ubuntu.com/blog/ubuntu-server-20-04">2025</a>, and I was hoping GitHub would take Python 2.7 along for the ride until they deprecate the <code class="language-plaintext highlighter-rouge">ubuntu-20.04</code> runner.</p>
+
+<p>But specifically, I use Python 2 for testing installation using <code class="language-plaintext highlighter-rouge">tox</code> and building and publishing my packages to PyPI and Azure Artifacts. Granted, I could live without the former, but the latter is a luxury hard to drop; going back to publishing manually would be the boring solution, and who likes boring?</p>
+
+<h2 id="the-bad-news">The bad news</h2>
+
+<p>Since the people behind GitHub’s <a href="https://github.com/actions/runner-images">runner-images</a> switched <code class="language-plaintext highlighter-rouge">ubuntu-latest</code> from <code class="language-plaintext highlighter-rouge">ubuntu-20.04</code> to <code class="language-plaintext highlighter-rouge">ubuntu-22.04</code>, I decided to “watch” their releases so I could be ahead of the game. And it was on April 10, 2023 when I got the news: <a href="https://github.com/actions/runner-images/issues/7401">python2.7 will be removed from the images on May 15, 2023</a>.</p>
+
+<p>While this was to be expected considering Python 2 saw its last release back in April 20, 2020, May 2023 was most definitely unexcepted. But instead of groveling, let’s find a solution.</p>
+
+<h2 id="the-options">The options</h2>
+
+<p>For my projects at work the obvious option is to switch from <a href="https://learn.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops&amp;tabs=browser#microsoft-hosted-agents">Microsoft-hosted agents</a> to <a href="https://learn.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops&amp;tabs=browser#install">self-hosted agents</a> which can be executed on one or more Servers, but for my public repos on GitHub things get a little bit trickier since it is recommended using <a href="https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners">self-hosted runners</a> with <a href="https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners#self-hosted-runner-security">private repositories</a>.</p>
+
+<h3 id="renting-a-vm">Renting a VM</h3>
+
+<p>Here I have explored Linode’s <a href="https://www.linode.com/products/shared/">Shared CPU options</a>, Azure’s <a href="https://learn.microsoft.com/azure/virtual-machines/sizes-b-series-burstable">Bs-series</a>, and Google’s <a href="https://cloud.google.com/compute/all-pricing#sharedcore">E2 shared-core machine types</a>, but I have found that Google Cloud offers a free tier for their <a href="https://cloud.google.com/build/pricing">Cloud Build</a> service where, at the time of this writing, the first 120 build-minutes per day are free, and free is always good.</p>
+
+<p>So I’ve already started learning about <a href="https://cloud.google.com/build/docs">Cloud Build</a> and <a href="https://cloud.google.com/build/docs/automating-builds/create-manage-triggers">creating build triggers</a> to <a href="https://cloud.google.com/build/docs/automating-builds/github/build-repos-from-github?generation=1st-gen">build repositories from GitHub</a> and considering whether I should have the <a href="https://cloud.google.com/build/docs/build-config-file-schema">Cloud Build config file</a> in my repos, inline on my trigger configuration or a Dockerfile.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Again, it was expected Python 2 would eventually be dropped, and as long as Ignition by Inductive Automation solely depends on Jython 2.7 all of us will be stuck with maintaining and supporting Python 2. But I’m glad we still have options and will report my experience in future posts.</p>
+
+<p>In the meantime let’s keep coding.</p>
+
+<p>Thanks for reading.</p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#azure pipelines">azure pipelines</a>
+          
+            <a href="/tags#continuous delivery">continuous delivery</a>
+          
+            <a href="/tags#continuous integration">continuous integration</a>
+          
+            <a href="/tags#github">github</a>
+          
+            <a href="/tags#python">python</a>
+          
+            <a href="/tags#python2">python2</a>
+          
+        </div>
+      
+
+      
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2023/03/10/installing-pyenv-and-managing-python-versions-in-ubuntu/" data-toggle="tooltip" data-placement="top" title="Installing pyenv and managing Python versions in Ubuntu">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'qmr0.github.io';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:amdqmr@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/qmr0" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/kamruddindia" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/kamruddinahmed" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Kamruddin Ahmed
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">qmr0.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

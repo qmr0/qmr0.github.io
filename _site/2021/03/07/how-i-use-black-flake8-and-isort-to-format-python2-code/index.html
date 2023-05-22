@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>How I use black, flake8 and isort to format Python2 code</title>
+
+  
+  <meta name="author" content="Kamruddin Ahmed">
+  
+
+  <meta name="description" content="and how I put it all together with pre-commit">
+
+  
+
+  
+  <meta name="keywords" content="azure,cesrom,coatl,coatl.dev,coatl-dev,__coatldev__,data,homebrew,macos,pycharm,python,sql,thecesrom,vscode">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Kamruddin Ahmed - Data Analyst" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Kamruddin Ahmed - Data Analyst">
+  <meta property="og:title" content="How I use black, flake8 and isort to format Python2 code">
+  <meta property="og:description" content="and how I put it all together with pre-commit">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Kamruddin Ahmed">
+  <meta property="og:article:published_time" content="2021-03-07T03:35:00+01:00">
+  <meta property="og:url" content="http://localhost:4000/2021/03/07/how-i-use-black-flake8-and-isort-to-format-python2-code/">
+  <link rel="canonical" href="http://localhost:4000/2021/03/07/how-i-use-black-flake8-and-isort-to-format-python2-code/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@kamruddindia">
+  <meta name="twitter:creator" content="@kamruddindia">
+
+  <meta property="twitter:title" content="How I use black, flake8 and isort to format Python2 code">
+  <meta property="twitter:description" content="and how I put it all together with pre-commit">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Kamruddin Ahmed - Data Analyst</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archive">Archive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li></ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/profile.jpg" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>How I use black, flake8 and isort to format Python2 code</h1>
+          
+            
+              <h2 class="post-subheading">and how I put it all together with pre-commit</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on 2021-03-07</span>
+            
+              <span class="post-meta">
+                <span class="d-none d-md-inline middot">&middot;</span>
+                Last updated 2021-06-21
+              </span>
+            
+            
+              <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="post-meta"><span class="d-none d-md-inline middot">&middot;</span> 5 minute read</span>
+
+
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <p>Welcome to part 2 of my series on how code formatters can assist in producing easy-to-read code, and hopefully easy to maintain too.</p>
+
+<p>On this installment I will discuss how I use tools like <a href="#black">black</a>, <a href="#isort">isort</a>, <a href="#flake8">flake8</a>, and how to put it all together using <a href="#pre-commit">pre-commit</a>.</p>
+
+<p>In, what is now, <a href="http://localhost:4000/2020/12/22/79-characters">part 1</a> I  mentioned that due to some work-related projects I still write Python 2 code, but as everyone is dropping support for Python 2, I have decided to use Python 3 tools to format my code.</p>
+
+<p>So let’s begin by describing each tool, and how I use them.</p>
+
+<h3 id="black">black</h3>
+
+<blockquote>
+  <p>The Uncompromising Code Formatter</p>
+</blockquote>
+
+<p>With <code class="language-plaintext highlighter-rouge">black</code> you can format Python code from 2.7 all the way to 3.8 (as of version 20.8b1), which makes for a great replacement of <a href="https://github.com/google/yapf" target="_blank">YAPF</a> which can only format code depending on the Python version being used to run it.</p>
+
+<p>My preference is using <a href="https://www.python.org/dev/peps/pep-0008/" target="_blank">PEP 8</a> as my style guide, and so, 79-characters per line of code is what I use. So it’s as simple as running the following code at the root of my project and all non-compliant files will be reformatted:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>black <span class="nt">--line-length</span> 79 <span class="nt">--target-version</span> py27 <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>Let’s explain each option.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-l</code> or <code class="language-plaintext highlighter-rouge">--line-length</code>: How many characters per line to allow. [default: 88]</li>
+  <li><code class="language-plaintext highlighter-rouge">-t</code> or <code class="language-plaintext highlighter-rouge">--target-version</code>: Python versions that should be supported by Black’s output. [default: per-file auto-detection]</li>
+</ul>
+
+<p>Fairly simple. Allow <code class="language-plaintext highlighter-rouge">79</code> characters per line, and use <code class="language-plaintext highlighter-rouge">py27</code> as the targetted version.</p>
+
+<h3 id="isort">isort</h3>
+
+<blockquote>
+  <p>A Python utility / library to sort imports.</p>
+</blockquote>
+
+<p>And just as their slogan states: “isort your imports, so you don’t have to.”</p>
+
+<p>Command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>isort <span class="nt">--multi-line</span> 3 <span class="nt">--profile</span> black <span class="nt">--python-version</span> 27 <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>The options used are mainly to be compatible with <code class="language-plaintext highlighter-rouge">black</code> (see <a href="https://pycqa.github.io/isort/docs/configuration/black_compatibility/" target="_blank">here</a>):</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--multi-line</code>: Multi line output (0-grid, 1-vertical, 2-hanging, 3-vert-hanging, 4-vert-grid, 5-vert-grid-grouped, 6-vert-grid-grouped-no-comma, 7-noqa, 8-vertical-hanging-indent-bracket, 9-vertical-prefix-from-module-import, 10-hanging-indent-with-parentheses).
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">3-vert-hanging</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">--profile</code>: Base profile type to use for configuration. Profiles include: black, django, pycharm, google, open_stack, plone, attrs, hug. As well as any shared profiles.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">black</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">--python-version</code>: Tells isort to set the known standard library based on the specified Python version. Default is to assume any Python 3 version could be the target, and use a union of all stdlib modules across versions. If auto is specified, the version of the interpreter used to run isort (currently: 39) will be used.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">27</code> for Python 2.7</li>
+    </ul>
+  </li>
+</ul>
+
+<p>But there’s still something missing. <code class="language-plaintext highlighter-rouge">black</code> does not care about comments or <a href="https://www.python.org/dev/peps/pep-0257/" target="_blank">docstrings</a>, and <code class="language-plaintext highlighter-rouge">isort</code> cares even less, for obvious reasons; enter <code class="language-plaintext highlighter-rouge">flake8</code>.</p>
+
+<h3 id="flake8">flake8</h3>
+
+<blockquote>
+  <p>flake8 is a python tool that glues together pep8, pyflakes, mccabe, and third-party plugins to check the style and quality of some python code.</p>
+</blockquote>
+
+<p>Anthony Sottile (<a href="https://gitlab.com/asottile" target="_blank">@asottile</a>) has mentioned that he plans to drop support for Python 2.7 in future releases, maybe in version <a href="https://gitlab.com/pycqa/flake8/-/issues/690" target="_blank">3.9 or 4.0</a>.</p>
+
+<p>Fortunately I can still use it for Python 2 by running the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flake8 <span class="nt">--max-doc-length</span><span class="o">=</span>72 <span class="nt">--ignore</span><span class="o">=</span>E211,E999,F401,F821,W503
+</code></pre></div></div>
+
+<p><a href="https://www.python.org/dev/peps/pep-0008/" target="_blank">PEP 8</a> recommends limiting docstrings or comments to 72 characters, which is exactly what I’m using for flake8.</p>
+
+<p>So let’s explain each option used.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--max-doc-length</code>: Maximum allowed doc line length for the entirety of this run. (Default: None)</li>
+  <li><code class="language-plaintext highlighter-rouge">--ignore</code>: Comma-separated list of errors and warnings to ignore (or skip). For example, <code class="language-plaintext highlighter-rouge">--ignore=E4,E51,W234</code>. (Default: [‘E226’, ‘E123’, ‘W504’, ‘E121’, ‘W503’, ‘E126’, ‘E704’, ‘E24’])</li>
+</ul>
+
+<p>In my case I am using <code class="language-plaintext highlighter-rouge">72</code> as the maximum allowed characters for my docstrings, in accordance to PEP 8, and ignoring the following errors:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">E211</code>: whitespace before ‘(‘
+    <ul>
+      <li>Since in Python 2 <code class="language-plaintext highlighter-rouge">print</code> is not a function, <code class="language-plaintext highlighter-rouge">black</code> adds a space between the <code class="language-plaintext highlighter-rouge">print</code> statement from Python 2, and the openning parenthesis</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">E999</code>: SyntaxError: invalid syntax
+    <ul>
+      <li>In my case this occurs again with the <code class="language-plaintext highlighter-rouge">print</code> statement where I am printing just one arguments like this <code class="language-plaintext highlighter-rouge">print arg</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">F401</code>: <code class="language-plaintext highlighter-rouge">module</code> imported but unused
+    <ul>
+      <li>I do import some modules in order to get “Intellisense” when I peek into the details in PyCharm</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">F821</code>: undefined name <code class="language-plaintext highlighter-rouge">name</code>
+    <ul>
+      <li>In one of my libraries I am checking if an argument is a string, and in order to cover my bases with plain strings (<code class="language-plaintext highlighter-rouge">str</code>) and unicode, I found that using <code class="language-plaintext highlighter-rouge">basestring</code> would work for all characters, including non-Latin characters</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">W503</code>: line break before binary operator
+    <ul>
+      <li>It doesn’t like when binary operators are broken into multi-line statements</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="pre-commit">pre-commit</h3>
+
+<blockquote>
+  <p>A framework for managing and maintaining multi-language pre-commit hooks.</p>
+</blockquote>
+
+<p>Finally, let’s put it all together with <a href="https://pre-commit.com/" target="_blank">pre-commit</a>.</p>
+
+<p>So in order to use <code class="language-plaintext highlighter-rouge">flake8</code> you’ll have to create a <code class="language-plaintext highlighter-rouge">.flake8</code> file. Mine looks like this:</p>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">[flake8]</span>
+<span class="py">ignore</span> <span class="p">=</span> <span class="s">E211, E999, F401, F821, W503</span>
+<span class="py">max-doc-length</span> <span class="p">=</span> <span class="s">72</span>
+</code></pre></div></div>
+
+<p>A <code class="language-plaintext highlighter-rouge">pyproject.toml</code> file that in my case looks like this:</p>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">[tool.black]</span>
+<span class="py">line-length</span> <span class="p">=</span> <span class="s">79</span>
+<span class="py">target-version</span> <span class="p">=</span> <span class="s">['py27']</span>
+
+<span class="err">[tool.isort]</span>
+<span class="py">profile</span> <span class="p">=</span> <span class="s">"black"</span>
+<span class="py">multi_line_output</span> <span class="p">=</span> <span class="s">3</span>
+<span class="py">py_version</span> <span class="p">=</span> <span class="s">27</span>
+</code></pre></div></div>
+
+<p>And finally my <code class="language-plaintext highlighter-rouge">.pre-commit-config.yaml</code> file:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">repos</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">repo</span><span class="pi">:</span> <span class="s">https://github.com/psf/black</span>
+    <span class="na">rev</span><span class="pi">:</span> <span class="s">20.8b1</span>
+    <span class="na">hooks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">black</span>
+  <span class="pi">-</span> <span class="na">repo</span><span class="pi">:</span> <span class="s">https://github.com/PyCQA/isort</span>
+    <span class="na">rev</span><span class="pi">:</span> <span class="s">5.7.0</span>
+    <span class="na">hooks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">isort</span>
+  <span class="pi">-</span> <span class="na">repo</span><span class="pi">:</span> <span class="s">https://github.com/PyCQA/flake8</span>
+    <span class="na">rev</span><span class="pi">:</span> <span class="s">3.8.4</span>
+    <span class="na">hooks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">flake8</span>
+</code></pre></div></div>
+
+<p>After you’ve configured all of this for the first time, first run the <code class="language-plaintext highlighter-rouge">install</code> command for <code class="language-plaintext highlighter-rouge">pre-commit</code> and to run tests I use <code class="language-plaintext highlighter-rouge">run</code> with the <code class="language-plaintext highlighter-rouge">--all-files</code> option, just like this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pre-commit <span class="nb">install
+</span>pre-commit installed at .git/hooks/pre-commit
+<span class="nv">$ </span>pre-commit run <span class="nt">--all-files</span>
+black....................................................................Passed
+isort....................................................................Passed
+flake8...................................................................Passed
+</code></pre></div></div>
+
+<p>So every time you try to commit something to your Git repo, all tests should be marked as <code class="language-plaintext highlighter-rouge">Passed</code>, otherwise the commit will fail.</p>
+
+<h2 id="bonus">Bonus</h2>
+
+<p>At the moment of writing this post both <code class="language-plaintext highlighter-rouge">black</code> and <code class="language-plaintext highlighter-rouge">isort</code> do support the use of <code class="language-plaintext highlighter-rouge">pyproject.toml</code>, something that <code class="language-plaintext highlighter-rouge">flake8</code> still hasn’t implemented unlike <a href="https://pypi.org/project/flake9/" target="_blank"><code class="language-plaintext highlighter-rouge">flake9</code></a> or <a href="https://flakehell.readthedocs.io/" target="_blank">FlakeHell</a>, which I have not integrated into my workflow; I’m still using <code class="language-plaintext highlighter-rouge">flake8</code> because I’ve installed it via Homebrew.</p>
+
+<p>While you have the option to “<code class="language-plaintext highlighter-rouge">pip</code>-install” all of these tools, currently I decided to use Homebrew because I don’t usually check if my packages are outdated, something that Homebrew contributors actually do with each new release. See: <a href="https://formulae.brew.sh/formula/black" target="_blank"><code class="language-plaintext highlighter-rouge">black</code></a>, <a href="https://formulae.brew.sh/formula/flake8" target="_blank"><code class="language-plaintext highlighter-rouge">flake8</code></a>, and <a href="https://formulae.brew.sh/formula/flake8" target="_blank"><code class="language-plaintext highlighter-rouge">isort</code></a>, which will install <a href="https://formulae.brew.sh/formula/python@3.9" target="_blank"><code class="language-plaintext highlighter-rouge">python@3.9</code></a> as they all depend on it.</p>
+
+<p>But if you do use <code class="language-plaintext highlighter-rouge">pip</code>, I recommend adding an alias for updating all of your outdated packages that should run the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> pip list <span class="nt">--outdated</span> <span class="nt">--format</span><span class="o">=</span>freeze | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s1">'^\-e'</span> | <span class="nb">cut</span> <span class="nt">-d</span> <span class="o">=</span> <span class="nt">-f</span> 1 | xargs <span class="nt">-n1</span> python <span class="nt">-m</span> pip <span class="nb">install</span> <span class="nt">--upgrade</span>
+</code></pre></div></div>
+
+<h2 id="other-useful-pip-packages">Other useful <code class="language-plaintext highlighter-rouge">pip</code> packages</h2>
+
+<ul>
+  <li><a href="https://pypi.org/project/pip-autoremove/" target="_blank"><code class="language-plaintext highlighter-rouge">pip-autoremove</code></a> for removing packages and all of their dependencies.</li>
+  <li><a href="http://pylint.pycqa.org/en/latest/" target="_blank"><code class="language-plaintext highlighter-rouge">pylint</code></a>, a static code analysis tool which looks for programming errors, helps enforcing a coding standard, sniffs for code smells and offers simple refactoring suggestions.</li>
+</ul>
+
+<p>Happy coding!</p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#coding standards">coding standards</a>
+          
+            <a href="/tags#homebrew">homebrew</a>
+          
+            <a href="/tags#pip">pip</a>
+          
+            <a href="/tags#python">python</a>
+          
+        </div>
+      
+
+      
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021/01/27/troubleshooting-gpg-signed-commits-on-macos/" data-toggle="tooltip" data-placement="top" title="Troubleshooting GPG signed commits on macOS">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2021/04/03/ignition-8-1-4-release/" data-toggle="tooltip" data-placement="top" title="Ignition 8.1.4 - Release">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'qmr0.github.io';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:amdqmr@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/qmr0" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/kamruddindia" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/kamruddinahmed" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Kamruddin Ahmed
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">qmr0.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

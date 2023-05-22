@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>79 characters</title>
+
+  
+  <meta name="author" content="Kamruddin Ahmed">
+  
+
+  <meta name="description" content="On Python code style, and formatters">
+
+  
+
+  
+  <meta name="keywords" content="azure,cesrom,coatl,coatl.dev,coatl-dev,__coatldev__,data,homebrew,macos,pycharm,python,sql,thecesrom,vscode">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Kamruddin Ahmed - Data Analyst" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Kamruddin Ahmed - Data Analyst">
+  <meta property="og:title" content="79 characters">
+  <meta property="og:description" content="On Python code style, and formatters">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Kamruddin Ahmed">
+  <meta property="og:article:published_time" content="2020-12-22T23:37:00+01:00">
+  <meta property="og:url" content="http://localhost:4000/2020/12/22/79-characters/">
+  <link rel="canonical" href="http://localhost:4000/2020/12/22/79-characters/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@kamruddindia">
+  <meta name="twitter:creator" content="@kamruddindia">
+
+  <meta property="twitter:title" content="79 characters">
+  <meta property="twitter:description" content="On Python code style, and formatters">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Kamruddin Ahmed - Data Analyst</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archive">Archive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li></ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/profile.jpg" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>79 characters</h1>
+          
+            
+              <h2 class="post-subheading">On Python code style, and formatters</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on 2020-12-22</span>
+            
+            
+              <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="post-meta"><span class="d-none d-md-inline middot">&middot;</span> 4 minute read</span>
+
+
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <p>Inspired by Daniel Stenberg’s blog post<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, hereby I declare myself as a 79-character purist.</p>
+
+<p>When I started using PyCharm for my personal, and work, projects one of the first things that I did was to learn about code formatting.</p>
+
+<p>I was coming from a C# world where tabs are preferred over spaces, and back in the day there were no style guides for C# code.</p>
+
+<h3 id="why-style-guides-are-certainly-a-good-thing">Why style guides are certainly a good thing</h3>
+
+<p>I could summarize my comments with just one word: <strong><em>consistency</em></strong>.</p>
+
+<p>Producing consistent code across multiple projects, and applying a style is a positive thing to do.</p>
+
+<p>There are many articles out there about their importance, just search for <em>coding style guide</em> using your favorite search engine and you’ll find multiple writings. <a href="https://www.bing.com/search?q=coding+style+guide" target="_blank">Bing it</a>, <a href="https://duckduckgo.com/?q=coding+style+guide" target="_blank">DuckDuckGo it</a>, <a href="https://www.google.com/search?q=coding+style+guide" target="_blank">Google it</a>.</p>
+
+<p>So I won’t repeat what many have said, instead I will share my preferences.</p>
+
+<h3 id="pep8">PEP8</h3>
+
+<blockquote>
+  <p>PEP stands for Python Enhancement Proposal. A PEP is a design document providing information to the Python community, or describing a new feature for Python or its processes or environment. The PEP should provide a concise technical specification of the feature and a rationale for the feature.<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup></p>
+</blockquote>
+
+<p>From <a href="https://www.python.org/dev/peps/pep-0008/" target="_blank">PEP 8</a> is where I decided to use 79 characters for code, and 72 characters for the docstring<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup>.</p>
+
+<h3 id="but-why-79">But why 79?</h3>
+
+<p>One could trace back the “80 characters/columns per line” constraint to <a href="https://en.wikipedia.org/wiki/Punched_card" target="_blank">punched cards</a>, something that is part of the history of computing that most of us have only seen in textbooks, documentaries, or museums.</p>
+
+<p>Also, one could argue that with modern screens which come in bigger sizes and offer higher resolution, such a limit is nonsense. Trust me, I use a 55” 4K TV as a computer monitor, but I also use a 13” MacBook Air for working on the same projects, and if I were to <em>“take full advantage”</em> of the 3840x2160 resolution from the 4K TV, there would be a lot of horizontal scrolling on my 1440x900 from the MacBook Air; and horizontal scrolling is still undesirable on a PC.</p>
+
+<h3 id="docstring-formats">Docstring formats</h3>
+
+<p>Within PyCharm (version 2020.3.1 at the time of this post) a couple of options for docstring formatting are offered. I’ll use the following function as an example for each.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">file_exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">os.path</span>
+    <span class="k">return</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Docstring will autogenerate as soon as you type three double-quotes <code class="language-plaintext highlighter-rouge">"""</code>, and hit Enter.</p>
+
+<h4 id="plain">Plain</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">file_exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+    <span class="s">"""
+
+    """</span>
+    <span class="kn">import</span> <span class="nn">os.path</span>
+    <span class="k">return</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="epytext">Epytext</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">file_exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+    <span class="s">"""
+
+    @param filepath:
+    @return:
+    """</span>
+    <span class="kn">import</span> <span class="nn">os.path</span>
+    <span class="k">return</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="restructuredtext-pycharms-default">reStructuredText (PyCharm’s default)</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">file_exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+    <span class="s">"""
+
+    :param filepath:
+    :return:
+    """</span>
+    <span class="kn">import</span> <span class="nn">os.path</span>
+    <span class="k">return</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="numpy">Numpy</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">file_exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+    <span class="s">"""
+
+    Parameters
+    ----------
+    filepath
+
+    Returns
+    -------
+
+    """</span>
+    <span class="kn">import</span> <span class="nn">os.path</span>
+    <span class="k">return</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="google">Google</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">file_exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+    <span class="s">"""
+
+    Args:
+        filepath:
+
+    Returns:
+
+    """</span>
+    <span class="kn">import</span> <span class="nn">os.path</span>
+    <span class="k">return</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>My preference was the Google format<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">4</a></sup> <sup id="fnref:5" role="doc-noteref"><a href="#fn:5" class="footnote" rel="footnote">5</a></sup>.</p>
+
+<h3 id="code-formatters">Code formatters</h3>
+
+<p>Again, there are many options out there. There’s <a href="https://github.com/hhatto/autopep8" target="_blank">autopep8</a>, <a href="https://github.com/psf/black" target="_blank">Black</a>, <a href="https://github.com/google/yapf" target="_blank">YAPF</a>, and, surely, many more. Choosing one would be a matter of preference.</p>
+
+<p>Since I still write Python 2.7 code, or rather Jython 2.7.1, at first I chose YAPF because it did what it was supposed to do; format my Python 2 code with a single command. But I’ve recently switched to Black. And the reason is very simple. Python 2 reached its end-of-life since 2020-01-01, and when you run <code class="language-plaintext highlighter-rouge">pip2</code> you get the following warning:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python2 <span class="nt">-m</span> pip list
+DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support <span class="k">for </span>Python 2.7 <span class="k">in </span>January 2021. More details about Python 2 support <span class="k">in </span>pip can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support pip 21.0 will remove support <span class="k">for </span>this functionality.
+</code></pre></div></div>
+
+<p>And while YAPF (<code class="language-plaintext highlighter-rouge">python2 -m pip install yapf</code>) supports Python 2.7, it <em>requires the code it formats to be valid Python for the version YAPF itself runs under. Therefore, if you format Python 3 code with YAPF, run YAPF itself under Python 3 (and similarly for Python 2)</em><sup id="fnref:6" role="doc-noteref"><a href="#fn:6" class="footnote" rel="footnote">6</a></sup>.</p>
+
+<p>The January 2021 date is the final nail in the coffin for Python 2.7, and since there is no way of formatting Python 2.7 code with YAPF running under Python 3, the only option I could find was Black.</p>
+
+<h4 id="enter-black">Enter Black</h4>
+
+<p>Black can be installed by running <code class="language-plaintext highlighter-rouge">pip install black</code>. It requires Python 3.6.0+ to run but you can reformat Python 2 code with it, too<sup id="fnref:7" role="doc-noteref"><a href="#fn:7" class="footnote" rel="footnote">7</a></sup>.</p>
+
+<p>By default, Black allows 88 characters per line, but running <code class="language-plaintext highlighter-rouge">black --line-length 79 --target-version py27 .</code> formats the code in the style that I like, and makes the end-of-lfe problem go away. And who doesn’t like emojis?</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>black <span class="nt">--line-length</span> 79 <span class="nt">--target-version</span> py27 <span class="nb">.</span>
+All <span class="k">done</span><span class="o">!</span> ✨ 🍰 ✨
+39 files left unchanged.
+</code></pre></div></div>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>A wise man once said:</p>
+
+<blockquote>
+  <p>“It’s a matter of preference. But convenience and ease of use override preference.” - César Román (2020-12-22).</p>
+</blockquote>
+
+<p>Thanks for reading.</p>
+
+<h3 id="references">References</h3>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Stenberg, Daniel (2020-11-30). <a href="https://daniel.haxx.se/blog/2020/11/30/i-am-an-80-column-purist/" target="_blank">“I am an 80 column purist”</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>Warsaw, Barry, et.al. <a href="https://www.python.org/dev/peps/pep-0001/#what-is-a-pep" target="_blank">“What is a PEP?”</a>. PEP 1 – PEP Purpose and Guidelines. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>van Rossuum, Guido, et.al. (2001-07-05) <a href="https://www.python.org/dev/peps/pep-0008/#maximum-line-length" target="_blank">“Maximum Line Length”</a>. PEP 8 – Style Guide for Python Code. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:4" role="doc-endnote">
+      <p><a href="https://www.sphinx-doc.org/en/master/usage/extensions/example_google.html" target="_blank">“Example Google Style Python Dosctrings”</a>. Sphinx 4.0.0+ documentation. <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:5" role="doc-endnote">
+      <p><a href="https://google.github.io/styleguide/pyguide.html" target="_blank">“Google Python Style Guide”</a>. Style guides for Google-originated open-source projects. <a href="#fnref:5" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:6" role="doc-endnote">
+      <p><a href="https://github.com/google/yapf#python-versions" target="_blank">“Python versions”</a>. google/yapf: A formatter for Python files. <a href="#fnref:6" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:7" role="doc-endnote">
+      <p><a href="https://github.com/psf/black#installation-and-usage" target="_blank">“Installation and usage”</a>. psf/black: The uncompromising Python code formatter. <a href="#fnref:7" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#coding standards">coding standards</a>
+          
+            <a href="/tags#python">python</a>
+          
+        </div>
+      
+
+      
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2020/12/18/azure-data-studio-homebrew-and-contributing-on-github/" data-toggle="tooltip" data-placement="top" title="Azure Data Studio, Homebrew, and contributing on GitHub">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2021/01/27/troubleshooting-gpg-signed-commits-on-macos/" data-toggle="tooltip" data-placement="top" title="Troubleshooting GPG signed commits on macOS">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'qmr0.github.io';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:amdqmr@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/qmr0" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/kamruddindia" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/kamruddinahmed" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Kamruddin Ahmed
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">qmr0.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

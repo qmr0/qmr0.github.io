@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Ignition 8.1.13 - Release</title>
+
+  
+  <meta name="author" content="Kamruddin Ahmed">
+  
+
+  <meta name="description" content="Installation python2 -m pip install --upgrade ignition-api New in 8.1.13 Scripting A new historical tag record will now be created...">
+
+  
+
+  
+  <meta name="keywords" content="azure,cesrom,coatl,coatl.dev,coatl-dev,__coatldev__,data,homebrew,macos,pycharm,python,sql,thecesrom,vscode">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Kamruddin Ahmed - Data Analyst" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Kamruddin Ahmed - Data Analyst">
+  <meta property="og:title" content="Ignition 8.1.13 - Release">
+  <meta property="og:description" content="Installation python2 -m pip install --upgrade ignition-api New in 8.1.13 Scripting A new historical tag record will now be created...">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Kamruddin Ahmed">
+  <meta property="og:article:published_time" content="2021-12-24T00:26:00+01:00">
+  <meta property="og:url" content="http://localhost:4000/2021/12/24/ignition-8-1-13-release/">
+  <link rel="canonical" href="http://localhost:4000/2021/12/24/ignition-8-1-13-release/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@kamruddindia">
+  <meta name="twitter:creator" content="@kamruddindia">
+
+  <meta property="twitter:title" content="Ignition 8.1.13 - Release">
+  <meta property="twitter:description" content="Installation python2 -m pip install --upgrade ignition-api New in 8.1.13 Scripting A new historical tag record will now be created...">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Kamruddin Ahmed - Data Analyst</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archive">Archive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li></ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/profile.jpg" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Ignition 8.1.13 - Release</h1>
+          
+
+          
+            <span class="post-meta">Posted on 2021-12-24</span>
+            
+            
+              <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="post-meta"><span class="d-none d-md-inline middot">&middot;</span> &lt; 1 minute read</span>
+
+
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h2 id="installation">Installation</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">python2</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">ignition</span><span class="o">-</span><span class="n">api</span>
+</code></pre></div></div>
+
+<h2 id="new-in-8113">New in 8.1.13</h2>
+
+<h3 id="scripting">Scripting</h3>
+
+<ul>
+  <li>A new historical tag record will now be created (and previous one retired) if a mismatch occurs between a current tag and its previously recorded datatype when using the system.tag.storeTagHistory function.</li>
+</ul>
+
+<h2 id="change-log">Change Log</h2>
+
+<h3 id="8113---2021-12-23">[8.1.13] - 2021-12-23</h3>
+
+<h4 id="ci">CI</h4>
+
+<ul>
+  <li>update CI workflow (<a href="https://github.com/thecesrom/Ignition/commit/385ba776d5aeef99afde2aaae0ca48af080d1c1f">385ba77</a>)</li>
+  <li>fix <code class="language-plaintext highlighter-rouge">mypy</code> step (<a href="https://github.com/thecesrom/Ignition/commit/49620da52802a9bd70db4c6da3d61624741b771a">49620da</a>)</li>
+</ul>
+
+<h4 id="documentation">Documentation</h4>
+
+<ul>
+  <li>update packages’ descriptions (<a href="https://github.com/thecesrom/Ignition/commit/275e1c7f82ae4395bc3e063d2808530adcdf2f8b">275e1c7</a>)</li>
+</ul>
+
+<h4 id="features">Features</h4>
+
+<ul>
+  <li>simplify <code class="language-plaintext highlighter-rouge">beep</code> code (<a href="https://github.com/thecesrom/Ignition/commit/5074d09498e2eb6b45d553f435a8145da5c9686d">5074d09</a>)
+    <ul>
+      <li><strong>BREAKING</strong>: <code class="language-plaintext highlighter-rouge">system.util.beep()</code> will print “Beep!” when called
+regardless of platform</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="miscellaneous-tasks">Miscellaneous Tasks</h4>
+
+<ul>
+  <li>add <code class="language-plaintext highlighter-rouge">cliff.toml</code> file for changelog generation (<a href="https://github.com/thecesrom/Ignition/commit/e63ff91ef1617c8b4c6d5a64a01d2e5f276647f4">e63ff91</a>)</li>
+  <li>format setup.cfg file (<a href="https://github.com/thecesrom/Ignition/commit/5915921282302c40ffbea5ad20b8213530591b8f">5915921</a>)</li>
+  <li>update <code class="language-plaintext highlighter-rouge">.pylintrc</code> remove <code class="language-plaintext highlighter-rouge">unused-import</code> (<a href="https://github.com/thecesrom/Ignition/commit/832cb1131a22b237c6311be7a2f8e8116fcd64b2">832cb11</a>)</li>
+</ul>
+
+<h4 id="refactor">Refactor</h4>
+
+<ul>
+  <li>change return type to <code class="language-plaintext highlighter-rouge">unicode</code> (<a href="https://github.com/thecesrom/Ignition/commit/ddb184dfc0edabb937c399a85cf64146c6a75380">ddb184d</a>)</li>
+  <li>rename argument from <code class="language-plaintext highlighter-rouge">pageID</code> to <code class="language-plaintext highlighter-rouge">pageId</code> (<a href="https://github.com/thecesrom/Ignition/commit/45bbf4f7704e814f3a3d326f671c9538dba17ada">45bbf4f</a>)</li>
+  <li>integrate minor changes (<a href="https://github.com/thecesrom/Ignition/commit/a008eed420bf112fd2bdc2876cf61f4315340362">a008eed</a>)</li>
+  <li>define ColType as a type alias (<a href="https://github.com/thecesrom/Ignition/commit/d18d44dd40acd985cf3c22ec1d04ff435722a185">d18d44d</a>)</li>
+  <li>move <code class="language-plaintext highlighter-rouge">String</code> alias to <code class="language-plaintext highlighter-rouge">java.util</code> (<a href="https://github.com/thecesrom/Ignition/commit/ea530ac1918b3e1e0204793ce1b607646c8c4c89">ea530ac</a>)</li>
+</ul>
+
+<h4 id="styling">Styling</h4>
+
+<ul>
+  <li>tell <code class="language-plaintext highlighter-rouge">isort</code> to sort using Python 2.7 (<a href="https://github.com/thecesrom/Ignition/commit/72fd6d060c26dd82b3492983f2e0ac63f8e42d40">72fd6d0</a>)</li>
+</ul>
+
+<h4 id="build">Build</h4>
+
+<ul>
+  <li>update <code class="language-plaintext highlighter-rouge">pydocstyle</code> hook (<a href="https://github.com/thecesrom/Ignition/commit/b04be0b7e87834ec0c94f1ec96abcab1b9e82ff4">b04be0b</a>)</li>
+  <li>pre-commit autoupdate (<a href="https://github.com/thecesrom/Ignition/pull/52">#52</a>) (<a href="https://github.com/thecesrom/Ignition/commit/29ee058ad3f011633f64c54ad71bcf0794d57ea4">29ee058</a>)</li>
+  <li>remove files from <code class="language-plaintext highlighter-rouge">MANIFEST.in</code> (<a href="https://github.com/thecesrom/Ignition/commit/d0fa3755815b7f224b3268b00ee4776be07ff517">d0fa375</a>)</li>
+</ul>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#github">github</a>
+          
+            <a href="/tags#ignition">ignition</a>
+          
+            <a href="/tags#pip">pip</a>
+          
+            <a href="/tags#python">python</a>
+          
+            <a href="/tags#scada">scada</a>
+          
+        </div>
+      
+
+      
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021/12/11/ignition-api-package-and-typing/" data-toggle="tooltip" data-placement="top" title="ignition-api package and typing">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2022/01/21/installing-starship-on-git-bash-for-windows/" data-toggle="tooltip" data-placement="top" title="Installing Starship on Git Bash for Windows">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'qmr0.github.io';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:amdqmr@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/qmr0" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/kamruddindia" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/kamruddinahmed" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Kamruddin Ahmed
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">qmr0.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

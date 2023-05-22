@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>ignition-api package and typing</title>
+
+  
+  <meta name="author" content="Kamruddin Ahmed">
+  
+
+  <meta name="description" content="Many things have changed since my last post, and I will do my best to do a count of the...">
+
+  
+
+  
+  <meta name="keywords" content="azure,cesrom,coatl,coatl.dev,coatl-dev,__coatldev__,data,homebrew,macos,pycharm,python,sql,thecesrom,vscode">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Kamruddin Ahmed - Data Analyst" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Kamruddin Ahmed - Data Analyst">
+  <meta property="og:title" content="ignition-api package and typing">
+  <meta property="og:description" content="Many things have changed since my last post, and I will do my best to do a count of the...">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Kamruddin Ahmed">
+  <meta property="og:article:published_time" content="2021-12-11T02:20:00+01:00">
+  <meta property="og:url" content="http://localhost:4000/2021/12/11/ignition-api-package-and-typing/">
+  <link rel="canonical" href="http://localhost:4000/2021/12/11/ignition-api-package-and-typing/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@kamruddindia">
+  <meta name="twitter:creator" content="@kamruddindia">
+
+  <meta property="twitter:title" content="ignition-api package and typing">
+  <meta property="twitter:description" content="Many things have changed since my last post, and I will do my best to do a count of the...">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Kamruddin Ahmed - Data Analyst</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archive">Archive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li></ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/profile.jpg" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>ignition-api package and typing</h1>
+          
+
+          
+            <span class="post-meta">Posted on 2021-12-11</span>
+            
+            
+              <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="post-meta"><span class="d-none d-md-inline middot">&middot;</span> 4 minute read</span>
+
+
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <p>Many things have changed since my <a href="http://localhost:4000/2021/10/26/lessons-learned-in-packaging-python-projects">last post</a>, and I will do my best to do a count of the highlights.</p>
+
+<h2 id="the-return-of-setuppy">The return of <code class="language-plaintext highlighter-rouge">setup.py</code></h2>
+
+<p>In that last post I briefly mentioned that I was moving away from <code class="language-plaintext highlighter-rouge">setup.py</code> onto <code class="language-plaintext highlighter-rouge">setup.cfg</code> and <code class="language-plaintext highlighter-rouge">pyproject.toml</code>, but when I wanted to install <code class="language-plaintext highlighter-rouge">ignition-api</code> on my Development machine as <a href="https://pip.pypa.io/en/latest/cli/pip_install/#editable-installs"><code class="language-plaintext highlighter-rouge">--editable</code></a> I realized that <code class="language-plaintext highlighter-rouge">setup.py</code> is needed to install it that way on Python 2.</p>
+
+<p>Otherwise, you might get the following error:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python2 <span class="nt">-m</span> pip <span class="nb">install</span> <span class="nt">--editable</span> path/to/SomeProject
+DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support <span class="k">for </span>Python 2.7 <span class="k">in </span>January 2021. More details about Python 2 support <span class="k">in </span>pip can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support pip 21.0 will remove support <span class="k">for </span>this functionality.
+ERROR: File <span class="s2">"setup.py"</span> not found. Directory cannot be installed <span class="k">in </span>editable mode: path/to/SomeProject
+<span class="o">(</span>A <span class="s2">"pyproject.toml"</span> file was found, but editable mode currently requires a setup.py based build.<span class="o">)</span>
+</code></pre></div></div>
+
+<p>If you also decided to delete your <code class="language-plaintext highlighter-rouge">setup.py</code> file and move everything to <code class="language-plaintext highlighter-rouge">setup.cfg</code>, <code class="language-plaintext highlighter-rouge">pip</code> requiring a <code class="language-plaintext highlighter-rouge">setup.py</code> file in order to install your project in editable mode does not mean that you must move everything back to <code class="language-plaintext highlighter-rouge">setup.py</code>. You could keep all the static information in <code class="language-plaintext highlighter-rouge">setup.cfg</code>, and your <code class="language-plaintext highlighter-rouge">setup.py</code> file could be as simple as this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python
+</span>
+<span class="s">"""Some Project."""</span>
+
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<p>And just by doing that, <code class="language-plaintext highlighter-rouge">pip install</code> won’t complain.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python2 <span class="nt">-m</span> pip <span class="nb">install</span> <span class="nt">--editable</span> path/to/SomeProject
+DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support <span class="k">for </span>Python 2.7 <span class="k">in </span>January 2021. More details about Python 2 support <span class="k">in </span>pip can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support pip 21.0 will remove support <span class="k">for </span>this functionality.
+Obtaining file:///path/to/SomeProject
+  Installing build dependencies ... <span class="k">done
+  </span>Getting requirements to build wheel ... <span class="k">done
+    </span>Preparing wheel metadata ... <span class="k">done
+</span>Installing collected packages: SomeProject
+  Running setup.py develop <span class="k">for </span>SomeProject
+Successfully installed SomeProject
+</code></pre></div></div>
+
+<h2 id="typing-and-python-2718"><code class="language-plaintext highlighter-rouge">typing</code>, and Python 2.7.18</h2>
+
+<p>After I created the <a href="https://pypi.org/project/ignition-api/"><code class="language-plaintext highlighter-rouge">ignition-api</code></a> package I noticed that in PyCharm I was being warned if I was passing an unexpected argument type on my function calls, which made me realize that PyCharm was inspecting the function’s docstring to determine expected types, as well as code-completion; unlike Visual Studio Code’s language server for Python called <a href="https://devblogs.microsoft.com/python/announcing-pylance-fast-feature-rich-language-support-for-python-in-visual-studio-code/">Pylance</a>.</p>
+
+<p>So, instead of adding type hints to “all” functions in Ignition, first I tried to check if there was something already in place for Visual Studio Code. How? Tweeting, of course.</p>
+
+<blockquote>
+  <p>Feature request: analyze docstrings to determine argument and return types additional to type-hinting.</p>
+
+  <p>Currently, the only way that I can let <a href="https://twitter.com/code?ref_src=twsrc%5Etfw">@code</a> know about the argument type and get proper code completion is by adding type hints for <a href="https://twitter.com/hashtag/Python2?src=hash&amp;ref_src=twsrc%5Etfw">#Python2</a> code.</p>
+
+  <p><a href="https://twitter.com/savostrowski?ref_src=twsrc%5Etfw">@savostrowski</a></p>
+
+  <blockquote>
+    <p>— César Román (@thecesrom) <a href="https://twitter.com/thecesrom/status/1444815763597000705?ref_src=twsrc%5Etfw">October 4, 2021</a></p>
+
+    <p>Exhibits A and B. No code completion vs Code completion after type hinting.</p>
+
+    <p>— César Román (@thecesrom) <a href="https://twitter.com/thecesrom/status/1444825426749132802?ref_src=twsrc%5Etfw">October 4, 2021</a></p>
+
+    <blockquote>
+      <p>We have an open feature request for grabbing type hints via docstrings for Python 3 code. Feel free to vote on it, if you’d like!</p>
+
+      <p><a href="https://github.com/microsoft/pylance-release/issues/854">https://github.com/microsoft/pylance-release/issues/854</a></p>
+
+      <p>Given that Python 2 has reached end of life, we have no plans to support it officially or improve its experience.</p>
+
+      <p>— Savannah Ostrowski (@savostrowski) <a href="https://twitter.com/savostrowski/status/1444841439079325702?ref_src=twsrc%5Etfw">October 4, 2021</a></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>A month later I was still debating if I should add type hints or not.</p>
+
+<blockquote>
+  <p>Type hinting or not?</p>
+
+  <p><a href="https://twitter.com/hashtag/python?src=hash&amp;ref_src=twsrc%5Etfw">#python</a> <a href="https://twitter.com/hashtag/python2?src=hash&amp;ref_src=twsrc%5Etfw">#python2</a> <a href="https://twitter.com/hashtag/vscode?src=hash&amp;ref_src=twsrc%5Etfw">#vscode</a> <a href="https://twitter.com/hashtag/pylance?src=hash&amp;ref_src=twsrc%5Etfw">#pylance</a></p>
+
+  <p>—César Román (@thecesrom) <a href="https://twitter.com/thecesrom/status/1458595850075074563?ref_src=twsrc%5Etfw">November 11, 2021</a></p>
+</blockquote>
+
+<p>The main motivation behind this was to get a similar experience across IDEs. So, before another month went by I decided to add type hints to all <a href="https://docs.inductiveautomation.com/display/DOC81/System+Functions">System Functions</a>.</p>
+
+<p>But I was aware that doing that would put me in a tough position deciding which Python versions I would support. A few months ago I decided that <code class="language-plaintext highlighter-rouge">ignition-api</code> would be allowed to be installed in Python versions greater or equal to <code class="language-plaintext highlighter-rouge">2.7</code>; this meant that I should add <code class="language-plaintext highlighter-rouge">try</code>-<code class="language-plaintext highlighter-rouge">except</code> blocks when attempting to import <code class="language-plaintext highlighter-rouge">__builtin__</code> as it was renamed to <code class="language-plaintext highlighter-rouge">builtins</code> in Python 3, as well as the deprecation of <code class="language-plaintext highlighter-rouge">basestring</code> and <code class="language-plaintext highlighter-rouge">unicode</code>.</p>
+
+<p>Additionally, type hinting appears to be still changing, and Python 3’s type hinting style is not recognized in Python 2, which uses what is called “type comments”. Take for instance Python 3.10.0 which introduced some changes with <a href="https://www.python.org/dev/peps/pep-0604/">PEP 604</a>.</p>
+
+<p>So providing the same feature for both Python 2 and 3 was immediately out of the question, which made me take a simpler approach: restrict to Python’s last 2.7 release, <code class="language-plaintext highlighter-rouge">2.7.18</code>.</p>
+
+<p>Once that call was made I mainly relied on <a href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a>, especially the section on <a href="https://www.python.org/dev/peps/pep-0484/#suggested-syntax-for-python-2-7-and-straddling-code">Python 2.7</a>, and <code class="language-plaintext highlighter-rouge">mypy</code>’s <a href="https://mypy.readthedocs.io/en/stable/cheat_sheet.html">“Type hints cheat sheet (Python 2)”</a>.</p>
+
+<p>So to all of you who installed <code class="language-plaintext highlighter-rouge">ignition-api</code> using Python 3+, my most sincere apologies. But if at some point I see myself cornered and have no other option but to allow Python 3, I’ll let all of you know.</p>
+
+<p>Thanks for reading.</p>
+
+<h2 id="additional-reading">Additional reading</h2>
+
+<ul>
+  <li>Python Types Intro - FastAPI - <a href="https://fastapi.tiangolo.com/python-types/">https://fastapi.tiangolo.com/python-types/</a></li>
+  <li>Type checking Python 2 code - Mypy documentation - <a href="https://mypy.readthedocs.io/en/stable/python2.html">https://mypy.readthedocs.io/en/stable/python2.html</a></li>
+  <li>Python Type Checking (Guide) - Real Python - <a href="https://realpython.com/python-type-checking/#type-comments">https://realpython.com/python-type-checking/#type-comments</a></li>
+</ul>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#ignition">ignition</a>
+          
+            <a href="/tags#inductive automation">inductive automation</a>
+          
+            <a href="/tags#mypy">mypy</a>
+          
+            <a href="/tags#pip">pip</a>
+          
+            <a href="/tags#pypi">pypi</a>
+          
+            <a href="/tags#python">python</a>
+          
+            <a href="/tags#typing">typing</a>
+          
+        </div>
+      
+
+      
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021/10/27/lessons-learned-in-packaging-python-projects/" data-toggle="tooltip" data-placement="top" title="Lessons learned in packaging Python projects">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2021/12/24/ignition-8-1-13-release/" data-toggle="tooltip" data-placement="top" title="Ignition 8.1.13 - Release">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'qmr0.github.io';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:amdqmr@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/qmr0" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/kamruddindia" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/kamruddinahmed" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Kamruddin Ahmed
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">qmr0.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

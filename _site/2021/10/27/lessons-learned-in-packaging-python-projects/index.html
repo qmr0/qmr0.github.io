@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Lessons learned in packaging Python projects</title>
+
+  
+  <meta name="author" content="Kamruddin Ahmed">
+  
+
+  <meta name="description" content="Recently I embarked upon a mission, and that mission was to package my Ignition project, which was built based on...">
+
+  
+
+  
+  <meta name="keywords" content="azure,cesrom,coatl,coatl.dev,coatl-dev,__coatldev__,data,homebrew,macos,pycharm,python,sql,thecesrom,vscode">
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Kamruddin Ahmed - Data Analyst" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Kamruddin Ahmed - Data Analyst">
+  <meta property="og:title" content="Lessons learned in packaging Python projects">
+  <meta property="og:description" content="Recently I embarked upon a mission, and that mission was to package my Ignition project, which was built based on...">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Kamruddin Ahmed">
+  <meta property="og:article:published_time" content="2021-10-27T00:39:00+02:00">
+  <meta property="og:url" content="http://localhost:4000/2021/10/27/lessons-learned-in-packaging-python-projects/">
+  <link rel="canonical" href="http://localhost:4000/2021/10/27/lessons-learned-in-packaging-python-projects/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@kamruddindia">
+  <meta name="twitter:creator" content="@kamruddindia">
+
+  <meta property="twitter:title" content="Lessons learned in packaging Python projects">
+  <meta property="twitter:description" content="Recently I embarked upon a mission, and that mission was to package my Ignition project, which was built based on...">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/profile.jpg">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Kamruddin Ahmed - Data Analyst</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archive">Archive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories">Categories</a>
+          </li></ul>
+  </div>
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/profile.jpg" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Lessons learned in packaging Python projects</h1>
+          
+
+          
+            <span class="post-meta">Posted on 2021-10-27</span>
+            
+            
+              <!--- "ReadTime on GitHub Jekyll" (c) 2020 Ruby Griffith Ramirez, MIT License -->
+
+
+
+
+
+
+  
+  <span class="post-meta"><span class="d-none d-md-inline middot">&middot;</span> 3 minute read</span>
+
+
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <p>Recently I embarked upon a mission, and that mission was to package my <a href="https://github.com/thecesrom/Ignition">Ignition</a> project, which was built based on my scripting needs, but did not make use of all System Functions.</p>
+
+<p>As time passed the project grew along with my needs, but after a comment made by <a href="https://forum.inductiveautomation.com/t/system-library-files/29773/3?u=thecesrom.git">RadicalRumin</a> at Inductive Automation Forum, I got the boost I needed to implement all System Functions, and created branches for each active version.</p>
+
+<p>Almost a year after RadicalRumin’s comment, a user by the name kgamble <a href="https://forum.inductiveautomation.com/t/ignition-repo-now-with-branches/37932/6?u=thecesrom.git">commented</a> about using Ignition on Visual Studio Code, something I had not been able to accomplish. And their comment did not resonate until almost a year later.</p>
+
+<p>So, a couple of months ago I started experimenting with packaging Ignition, and all that it entails. But after adding a <code class="language-plaintext highlighter-rouge">setup.py</code> <a href="https://forum.inductiveautomation.com/t/ignition-repo-now-with-branches/37932/7?u=thecesrom.git">file</a>, and trying <code class="language-plaintext highlighter-rouge">python setup.py install</code>, I was still not able to get code completion on Visual Studio Code.</p>
+
+<p>I finally got the courage to try PyPI, so I read the <a href="https://packaging.python.org/tutorials/packaging-projects/">“Packaging Python Projects”</a> tutorial, and the <a href="https://packaging.python.org/guides/distributing-packages-using-setuptools/">“Packaging and distributing projects”</a> guide, and based my first <code class="language-plaintext highlighter-rouge">setup.py</code> file insipired by navdeep-G’s <a href="https://github.com/navdeep-G/setup.py">setup.py</a> project, psf’s <a href="https://github.com/psf/black/blob/HEAD/setup.py">black</a>, and <a href="https://github.com/psf/requests/blob/HEAD/setup.py">requests</a>.</p>
+
+<p>Here it is in its splendor:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+</span>
+<span class="s">"""Ignition API."""</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">codecs</span> <span class="kn">import</span> <span class="nb">open</span>
+
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">find_packages</span><span class="p">,</span> <span class="n">setup</span>
+
+<span class="n">here</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+
+<span class="n">about</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">here</span><span class="p">,</span> <span class="s">"src"</span><span class="p">,</span> <span class="s">"system"</span><span class="p">,</span> <span class="s">"__version__.py"</span><span class="p">),</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">exec</span> <span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">about</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"README.md"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="s">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">readme</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">about</span><span class="p">[</span><span class="s">"__title__"</span><span class="p">],</span>
+    <span class="n">version</span><span class="o">=</span><span class="n">about</span><span class="p">[</span><span class="s">"__version__"</span><span class="p">],</span>
+    <span class="n">description</span><span class="o">=</span><span class="n">about</span><span class="p">[</span><span class="s">"__description__"</span><span class="p">],</span>
+    <span class="n">long_description</span><span class="o">=</span><span class="n">readme</span><span class="p">,</span>
+    <span class="n">long_description_content_type</span><span class="o">=</span><span class="s">"text/markdown"</span><span class="p">,</span>
+    <span class="n">author</span><span class="o">=</span><span class="n">about</span><span class="p">[</span><span class="s">"__author__"</span><span class="p">],</span>
+    <span class="n">author_email</span><span class="o">=</span><span class="n">about</span><span class="p">[</span><span class="s">"__author_email__"</span><span class="p">],</span>
+    <span class="n">python_requires</span><span class="o">=</span><span class="s">"&gt;=2.7"</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="n">about</span><span class="p">[</span><span class="s">"__url__"</span><span class="p">],</span>
+    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="s">"src"</span><span class="p">),</span>
+    <span class="n">package_dir</span><span class="o">=</span><span class="p">{</span><span class="s">""</span><span class="p">:</span> <span class="s">"src"</span><span class="p">},</span>
+    <span class="n">license</span><span class="o">=</span><span class="n">about</span><span class="p">[</span><span class="s">"__license__"</span><span class="p">],</span>
+    <span class="n">classifiers</span><span class="o">=</span><span class="p">[</span>
+        <span class="s">"Intended Audience :: Information Technology"</span><span class="p">,</span>
+        <span class="s">"Intended Audience :: Manufacturing"</span><span class="p">,</span>
+        <span class="s">"License :: OSI Approved :: MIT License"</span><span class="p">,</span>
+        <span class="s">"Operating System :: MacOS :: MacOS X"</span><span class="p">,</span>
+        <span class="s">"Operating System :: Microsoft :: Windows"</span><span class="p">,</span>
+        <span class="s">"Operating System :: POSIX :: Linux"</span><span class="p">,</span>
+        <span class="s">"Programming Language :: Python"</span><span class="p">,</span>
+        <span class="s">"Programming Language :: Python :: 2 :: Only"</span><span class="p">,</span>
+        <span class="s">"Programming Language :: Python :: 2.7"</span><span class="p">,</span>
+        <span class="s">"Topic :: Software Development :: Libraries :: Python Modules"</span><span class="p">,</span>
+        <span class="s">"Topic :: Software Development :: Testing :: Mocking"</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>Finally, I published it into PyPI as <a href="https://pypi.org/project/ignition-api/">ignition-api</a> for the pure Python code, and <a href="https://pypi.org/project/ignition-api-jython/">ignition-api-jython</a> for the Jython implementation.</p>
+
+<p>But calamity struck. I was getting an error when trying to install the package on Jython: “ERROR: No matching distribution found for setuptools&gt;=40.8.0”. But I found that Jython 2.7.2 comes with version 41.0.1, so it didn’t make sense. What was this madness?</p>
+
+<p>Then I tried to install <code class="language-plaintext highlighter-rouge">youtube-dl</code> from GitHub releases, and it succeeded! What was the difference between that project and mine? It turned out, that just like <a href="https://github.com/normanius">normanius</a> mentioned on an <a href="https://github.com/pypa/pip/issues/9242">issue</a> they created, the culprit was the presence of <code class="language-plaintext highlighter-rouge">pyproject.toml</code>.</p>
+
+<p>I was using <code class="language-plaintext highlighter-rouge">pyproject.toml</code> for configuring <code class="language-plaintext highlighter-rouge">black</code> and <code class="language-plaintext highlighter-rouge">pydocstyle</code>, but nothing else. So, an easy fix was to move all settings for <code class="language-plaintext highlighter-rouge">flake8</code>, <code class="language-plaintext highlighter-rouge">isort</code>, and <code class="language-plaintext highlighter-rouge">pydocstyle</code> into <code class="language-plaintext highlighter-rouge">setup.cfg</code> and create a workflow for checking code quality using <code class="language-plaintext highlighter-rouge">pylint</code> and <code class="language-plaintext highlighter-rouge">black</code>.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">CI</span>
+
+<span class="na">on</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">push</span><span class="pi">,</span> <span class="nv">pull_request</span><span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+
+    <span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Set up Python </span><span class="m">3.9</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-python@v2</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">python-version</span><span class="pi">:</span> <span class="m">3.9</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install dependencies</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">python -m pip install --upgrade pip</span>
+        <span class="s">python -m pip install pylint</span>
+        <span class="s">python -m pip install black</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checking the code with black</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">black --check --line-length 79 --target-version py27 src</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Analysing the code with pylint</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">pylint src</span>
+
+</code></pre></div></div>
+
+<p>A small diversion, <a href="https://github.com/actions/starter-workflows/blob/HEAD/ci/pylint.yml">GitHub actions’ starter workflow for pylint</a> is essentially <a href="https://github.com/actions/starter-workflows/issues/636">broken</a>. And I have a PR that should fix that: <a href="https://github.com/actions/starter-workflows/pull/1108">actions#1108</a>.</p>
+
+<p>And that did it!</p>
+
+<p>Happy ending? No.</p>
+
+<p>I continued refactoring my project, and moved some duplicate code to the corresponding package: <code class="language-plaintext highlighter-rouge">com.inductiveautomation</code>. Code, code, code. Type, type, type. Problems arose.</p>
+
+<p>On my <a href="http://localhost:4000/2020/10/01/configuring-jython-in-pycharm/#installing-jython-on-macos">“Configuring Jython in PyCharm”</a> guide I wrote about having issues with Jython 2.7.2 when it was set as the project interpreter, but now 2.7.1 doesn’t work either. No big deal, right? They’ll fix both issues I’ve submitted, right? <a href="https://youtrack.jetbrains.com/issue/PY-44759">PY-44759</a> and <a href="https://youtrack.jetbrains.com/issue/PY-50491">PY-50491</a>, right? Right? Maybe.</p>
+
+<p>But! There’s always a but. Jython fails to import modules/subpackages under <code class="language-plaintext highlighter-rouge">com.inductiveautomation</code>. See: <a href="https://github.com/jython/jython/issues/131">jython#131</a>. And that, my friends, is what made me pull the plug on Ignition’s <code class="language-plaintext highlighter-rouge">jython</code> branch, and marking <code class="language-plaintext highlighter-rouge">ignition-api-jython</code> as <strong>Inactive</strong>.</p>
+
+<p>Could this be fixed? I don’t think so, as Jython is somewhat a graveyard at this moment, and I don’t have the knowledge nor interest in working on a possible fix. But still, I decided to move the <code class="language-plaintext highlighter-rouge">jython</code> branch to its own repo (<a href="https://github.com/thecesrom/ignition-api-jython">ignition-api-jython</a>) in case there is a solution in the future, or if someone is willing to fork it.</p>
+
+<p>Finally, I learned about automating <a href="https://github.com/thecesrom/Ignition/blob/HEAD/.github/workflows/pypi_upload.yml">publishing to PyPI via GitHub actions</a>, as well as moving away from <code class="language-plaintext highlighter-rouge">setup.py</code> and use <code class="language-plaintext highlighter-rouge">pyproject.toml</code> and <code class="language-plaintext highlighter-rouge">setup.cfg</code> instead, and installing Python packages’ extras and using them for <code class="language-plaintext highlighter-rouge">pre-commit</code>. But that, my friends, will be a story for another time.</p>
+
+<p>Thanks for reading. And happy coding.</p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#github">github</a>
+          
+            <a href="/tags#ignition">ignition</a>
+          
+            <a href="/tags#incendium">incendium</a>
+          
+            <a href="/tags#inductive automation">inductive automation</a>
+          
+            <a href="/tags#jython">jython</a>
+          
+            <a href="/tags#pip">pip</a>
+          
+            <a href="/tags#pypi">pypi</a>
+          
+            <a href="/tags#python">python</a>
+          
+            <a href="/tags#testpypi">testpypi</a>
+          
+        </div>
+      
+
+      
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021/10/12/i-m-still-around/" data-toggle="tooltip" data-placement="top" title="I'm still around">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2021/12/11/ignition-api-package-and-typing/" data-toggle="tooltip" data-placement="top" title="ignition-api package and typing">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'qmr0.github.io';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:amdqmr@gmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/qmr0" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/kamruddindia" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/kamruddinahmed" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Kamruddin Ahmed
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">qmr0.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <!-- Please don't remove this, keep my open source work credited :) -->
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>
